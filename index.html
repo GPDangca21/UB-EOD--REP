@@ -212,10 +212,8 @@ const brands = [
     trackerDate:"July 30, 2026",
     tracker:[
      ["Compliance (Account Health)","New GMP Dietary-Supplements / Food &amp; Product Safety certification flag on GUMP28 (B0GTQF2G7C), dated 07/23; listing at risk of removal, $129 at-risk; submission required — needs user decision.","Action Required","High"],
-     ["Compliance — child safety (NEW · 07/30)","2nd Food &amp; Product Safety issue surfaced 07/30: children's toy safety on the Poop Sticker Tracker 6-Pack (B0DL1B6TL5 / 6A-5J3Y-0FZB), $408 at-risk — listing already REMOVED; submission required. Separate from the GUMP28 GMP flag, which now carries a submission deadline of Oct 21 2026. AHR 704 (was 708), still Healthy — no rating impact. Both need your decision; do not submit without approval.","Action Required","High"],
      ["Missing browse node","GUMP28 (B0GTQF2G7C) shows no Sales Rank (was 0); same ASIN now carries the GMP flag. Bundles exempt. No action needed.","No action needed","Medium"],
-     ["Voice of the Customer","NCX mix: Poor 1 · Good 3 · Excellent 6. Magnesium 56-Serv (B0GYCTWQX8) NCX 3.33% (1/30), performance/quality; one listing slipped Excellent→Good.","Open","Medium"],
-     ["Suppressed listings","2 search-suppressed (unchanged since 07/01): BeginBaby+Stickers (B0DNRNYPLR) &amp; Growing Up 56+Stickers (B0F16Y4LD5) — both bundles; single-packs active. Poop Stickers bundles have been discontinued — no action needed.","No action needed","Low"],
+     ["Voice of the Customer","NCX mix: Poor 1 · Good 3 · Excellent 6. Magnesium 56-Serv (B0GYCTWQXB) NCX 3.33% (1/30), performance/quality; one listing slipped Excellent→Good.","Open","Medium"],
      ["Shipment discrepancies","Closed shipments Located &lt; Expected (all 'Send again'): ORF2 −107, RDU2 −65, TEB9 −23, BNA6 −21, plus smaller. Possible FBA reimbursement.","Open","Low"],
      ["Pricing","Pricing Health clean — 0 deactivated, 0 ineligible for Featured Offer, 0 pricing opportunities.","Clear","Low"],
      ["Stranded inventory","0 stranded items — no active FBA inventory stranded.","Clear","Low"],
@@ -252,8 +250,7 @@ const brands = [
   findings:[
    ["Reviews","Hero SKUs carry 413/152 reviews vs. 6,700–16,900 for the volume leaders.","Vine + automated review requests across heroes; target 1,000+ per hero.","High","Done","Manual review request ineligible — the automated review request was already activated for this ASIN."],
    ["Organic ranking","Magnesium Drink doesn't rank on page one of 'magnesium for kids' (a sleep/calm market).","Re-map keywords &amp; copy to the hydration/constipation niche; buy relevance via ads.","High","Open",""],
-   ["Pricing/promo","Premium under-justified on page; shallow S&S; inconsistent coupons.","Coupons on all heroes; deepen Subscribe &amp; Save; anchor list price.","Medium","For approval","For client approval."],
-   ["Catalog","20+ near-identical bundles risk review fragmentation.","Consolidate to hero-single + 3–4 hero bundles.","Medium","Open",""]
+   ["Pricing/promo","Premium under-justified on page; shallow S&S; inconsistent coupons.","Coupons on all heroes; deepen Subscribe &amp; Save; anchor list price.","Medium","For approval","For client approval."]
   ],
   tasks:{accomplished:5, pending:3, lookahead:2}
  },
@@ -287,22 +284,21 @@ const brands = [
   gap:{us:37, usl:"37", them:17600, theml:"Neuro Gum 17.6K", themName:"Neuro Gum"},
   frontend:{
     date:"July 30, 2026",
-    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Blow It Gum sole seller · A+ content. 11 SKUs across 7 unique ASINs (the 3-Pack &amp; Variety SKUs pair an FBA + FBM offer on one page). All bullets pass, every live listing renders A+ Content, all live ASINs hold the Buy Box, and there are no unauthorized sellers. No open frontend defects — the Mental Mint 3-Pack Buy-Box loss is now resolved.`,
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Blow It Gum sole seller · A+ content. 11 SKUs across 7 unique ASINs (the 3-Pack &amp; Variety SKUs pair an FBA + FBM offer on one page). All bullets pass, every live listing renders A+ Content, all live ASINs hold the Buy Box, and there are no unauthorized sellers. No open frontend defects; the only watch is the Zapple 3-Pack low stock.`,
     stats:[["11","SKUs checked (7 unique ASINs)"],["0","Buy Box defects — resolved"],
       ["0","Missing A+ — resolved"],["0","Unauthorized resellers"],
       ["$948","MTD sales · run rate $1.1K"]],
     rows:[
-     ["Mental Mint 3-Pack · B0FN1XXM4N","Restocked — Buy Box regained",`<span style="color:var(--good);font-weight:700">✓ Resolved (07/30)</span> — FBA restocked, Featured Offer back live.`],
      ["Zapple 3-Pack · B0FN1ZS2PG","Low stock (11 left)","Passes all four; Buy Box held by FBA twin — restock soon."]
     ],
-    urgent:`<b>Mental Mint 3-Pack (B0FN1XXM4N) — resolved.</b> The FBA offer has restocked and regained the Buy Box (confirmed 07/30), closing the earlier pass→fail loss. Remaining watch: restock the Zapple 3-Pack (down to 11 units) before it goes unavailable; and the standing CX item on the Mental Mint 2-Pack (see Account health).`,
-    trend:`Change since last audit: the Mental Mint 3-Pack restocked and regained its Buy Box, and A+ Content is live on all three 2-Packs — both prior defects <b>resolved</b>. No open frontend defects remain; only the Zapple 3-Pack low-stock watch. No unauthorized sellers, Account Health Healthy, Featured Offer 100%.`
+    urgent:`<b>Watch — restock the Zapple 3-Pack (B0FN1ZS2PG), down to 11 units,</b> before it goes unavailable. Also monitor the standing CX item on the Mental Mint 2-Pack (see Account health).`,
+    trend:`No open frontend defects — all bullets pass, A+ Content is live on every listing, and all live ASINs hold the Buy Box. Only watch: the Zapple 3-Pack low-stock (11 units). No unauthorized sellers, Account Health Healthy, Featured Offer 100%.`
   },
   findings:[
-   ["Product spec","Listing states no caffeine content — the category's #1 decision spec.","State mg caffeine per piece in title, bullets, images, A+ immediately.","Critical","TBC, WIP",""],
+   ["Product spec","Listing states no caffeine content — the category's #1 decision spec.","State mg caffeine per piece in title, bullets, images, A+ immediately.","Critical","For approval","For client / Hunter approval to add caffeine mg in the title."],
    ["Reviews","3.4★ variety pack (37 reviews) is disqualifying vs. 4.2–4.6 norm.","<span style=\"color:var(--good);font-weight:700\">✓ Automated review requests enabled (done).</span> Can also send manual review requests to make sure every eligible order is covered; diagnose the 3.4★ drivers; Vine for the rest.","High"],
    ["Pricing","2–4× rivals per piece ($1.00–1.10 vs $0.25–0.62) with fewer pieces.","Larger-count format to reach $0.40–0.60/piece; add coupons + S&S.","High","",""],
-   ["Price per count (3-Pack)","3-Pack price per count is still a work in progress.","Reduce per-piece cost via a larger-count format ($0.40–0.60/piece); under active troubleshooting.","High","WIP",""],
+   ["3-Pack Variants","Ongoing works on the price per count issues.","Reduce per-piece cost via a larger-count format ($0.40–0.60/piece); under active troubleshooting.","High","WIP",""],
    ["Coupons","No coupons running on the hero SKUs.","Launch coupons on the hero SKUs to lift conversion and repeat purchase.","Medium","For approval","For client approval."]
   ],
   tasks:{accomplished:4, pending:2, lookahead:2}
@@ -318,7 +314,6 @@ const brands = [
     tracker:[
      ["Compliance (Account Health)","AHR 212 (Healthy), 0 policy violations across all 10 categories, 0% Order Defect Rate. Seller-fulfilled OTDR recovered to 90.74% (49/54), back above the 90% target — the prior 'At Risk' banner has cleared.","Resolved","Low"],
      ["Shipment discrepancies","LBE1 (FBA199PG99RV) received 110/140 — 30-unit shortfall (~$570), Closed; follow up on reconciliation before the claim window closes. LAS1 95/96; HIA1 receiving (80/80).","Open","Low"],
-     ["Missing browse node","Korean Exfoliating Mitt (B0FWCL9TWN / EP-EM-001) still has no Sales Rank; review browse-node / category assignment. Carried over; currently out of stock. No action needed.","Closed","Low"],
      ["Suppressed listings","No search-suppressed listings. 6 of 11 SKUs inactive from zero inventory (out-of-stock/closed) — a stock status, not content suppression.","Clear","Low"],
      ["Pricing","0 offers deactivated for pricing errors, 0 ineligible for Featured Offer, 0 close to Featured Offer price.","Clear","Low"],
      ["Stranded inventory","0 stranded — no active FBA inventory stuck in fulfillment centers.","Clear","Low"],

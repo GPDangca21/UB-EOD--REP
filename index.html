@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Marketplace Intelligence — Portfolio Dashboard</title>
+<style>
+  :root{
+    --navy:#1F3A5F; --teal:#2E8B8B; --coral:#E07856; --light:#EAF1F1;
+    --band:#F5F8F8; --ink:#222; --grey:#5A5A5A; --line:#dfe7e7;
+    --crit:#B00020; --high:#E07856; --med:#5A5A5A; --good:#0A7A0A;
+    --bg:#f4f6f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.5}
+  a{color:var(--teal)}
+  header{background:linear-gradient(135deg,var(--navy),#2b527f);color:#fff;padding:28px 32px 22px}
+  header .kick{color:#bcd; letter-spacing:.14em;font-size:12px;font-weight:700;text-transform:uppercase}
+  header h1{margin:6px 0 4px;font-size:26px;font-weight:800}
+  header p{margin:0;color:#cdd9e5;font-size:13px}
+  .wrap{max-width:1180px;margin:0 auto;padding:20px 20px 60px}
+  .sect{margin-top:30px}
+  .sect h2{font-size:18px;color:var(--navy);border-left:4px solid var(--coral);
+    padding-left:10px;margin:0 0 4px}
+  .sect .sub{color:var(--grey);font-size:13px;margin:0 0 16px;padding-left:14px}
+
+  /* TABS */
+  .tabbar{position:sticky;top:0;z-index:20;background:#fff;padding:12px 14px;margin:8px 0 14px;
+    display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-radius:14px;
+    border:1px solid var(--line);box-shadow:0 4px 16px rgba(31,58,95,.14)}
+  .tablabel{font-size:11px;font-weight:800;color:var(--grey);text-transform:uppercase;letter-spacing:.1em;margin-right:2px}
+  .tab{border:1.5px solid #cddada;background:#fff;border-radius:24px;padding:10px 20px;
+    font-size:14.5px;cursor:pointer;color:var(--navy);font-weight:700;transition:.15s;white-space:nowrap}
+  .tab:hover{border-color:var(--teal);background:var(--band)}
+  .tab.active{background:var(--navy);color:#fff;border-color:var(--navy);
+    box-shadow:0 4px 12px rgba(31,58,95,.4);transform:translateY(-1px)}
+  .tab .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:8px;vertical-align:middle}
+  .tab .dot.issue{background:var(--crit)} .tab .dot.ok{background:var(--good)}
+  .tab.active .dot.ok{background:#7CFC9A}
+  .panel{display:none;animation:fade .25s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  /* KPI strip */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+  .kpi{background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 2px 10px rgba(0,0,0,.06);
+    border-top:3px solid var(--teal)}
+  .kpi .n{font-size:30px;font-weight:800;color:var(--navy)}
+  .kpi .l{font-size:12px;color:var(--grey);margin-top:2px}
+  .kpi.acc{border-top-color:var(--good)} .kpi.pen{border-top-color:var(--coral)}
+  .kpi.look{border-top-color:var(--navy)} .kpi.brand{border-top-color:var(--teal)}
+
+  /* brand card */
+  .card{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);overflow:hidden}
+  .card .top{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;
+    justify-content:space-between;align-items:flex-start;gap:8px}
+  .card h3{margin:0;font-size:18px;color:var(--navy)}
+  .card .cat{font-size:12.5px;color:var(--grey);margin-top:3px}
+  .pill{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;color:#fff}
+  .pill.crit{background:var(--crit)} .pill.high{background:var(--coral)}
+  .card .body{padding:16px 18px}
+  .metrics{display:flex;gap:22px;margin-bottom:14px;flex-wrap:wrap}
+  .metric{font-size:12px;color:var(--grey)}
+  .metric b{display:block;font-size:17px;color:var(--ink)}
+  .row{font-size:13.5px;margin:9px 0}
+  .row .tag{font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+  .row.issue .tag{color:var(--crit)} .row.opp .tag{color:var(--good)}
+
+  /* account health card */
+  .ahcard{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);
+    padding:16px 18px;border-left:4px solid var(--good)}
+  .ahcard.issue{border-left-color:var(--crit)}
+  .ahcard .ahtop{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+  .ahcard h3{margin:0;font-size:15px;color:var(--navy)}
+  .ahcard .st{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:20px;color:#fff;white-space:nowrap;background:var(--good)}
+  .ahcard.issue .st{background:var(--crit)}
+  .ahcard .ahnote{font-size:13px;color:var(--grey)}
+  .asin{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--navy);font-weight:700}
+
+  /* review gap */
+  .gap{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:18px 20px}
+  .gaprow{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;margin:9px 0}
+  .gaprow .name{font-size:12.5px;text-align:right;color:var(--grey)}
+  .gaprow .name b{color:var(--navy)}
+  .bar{position:relative;background:var(--band);border-radius:6px;height:24px;overflow:hidden}
+  .bar > span{position:absolute;left:0;top:0;bottom:0;border-radius:6px;
+    display:flex;align-items:center;padding-left:8px;font-size:11px;font-weight:700;color:#fff;white-space:nowrap}
+  .bar.us > span{background:var(--coral)} .bar.them > span{background:var(--navy)}
+  .legend{font-size:12px;color:var(--grey);margin-top:6px}
+  .legend b.us{color:var(--coral)} .legend b.them{color:var(--navy)}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,.06);font-size:13px}
+  thead th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-size:12px}
+  tbody td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+  tbody tr:nth-child(even){background:var(--band)}
+  .b-badge{font-weight:700;color:var(--navy);white-space:nowrap}
+  .pri{font-weight:700;font-size:11px}
+  .pri.Critical{color:var(--crit)} .pri.High{color:var(--coral)} .pri.Medium{color:var(--med)}
+  .fail{color:var(--crit);font-weight:700}
+  .stbadge{font-weight:700;font-size:11px;white-space:nowrap}
+  .stbadge.stat-ar{color:var(--crit)} .stbadge.stat-open{color:var(--coral)}
+  .stbadge.stat-clear{color:var(--good)} .stbadge.stat-info{color:var(--grey)}
+  .stbadge.stat-monitor{color:#B8860B} .stbadge.stat-closed{color:var(--navy)}
+  .note-sm{font-size:11px;color:var(--grey);font-style:italic}
+
+  /* frontend deep-dive */
+  .bh-stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
+  .bh-stat{background:#fff;border-radius:10px;padding:13px 14px;box-shadow:0 2px 10px rgba(0,0,0,.06);border-top:3px solid var(--teal)}
+  .bh-stat:nth-child(2){border-top-color:var(--coral)} .bh-stat:nth-child(5){border-top-color:var(--good)}
+  .bh-stat .n{font-size:22px;font-weight:800;color:var(--navy)}
+  .bh-stat .l{font-size:11px;color:var(--grey);margin-top:2px;line-height:1.35}
+  .bh-panel{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:16px 18px;margin-top:14px}
+  .bh-panel h3{margin:0 0 8px;font-size:14px;color:var(--navy)}
+  .bh-panel > p{font-size:12.5px;color:var(--grey);margin:0 0 12px}
+  .bh-panel table{box-shadow:none;font-size:12px}
+  .bh-panel ul{margin:0;padding-left:18px}
+  .bh-panel li{font-size:12.5px;margin-bottom:8px;color:var(--ink)}
+  .bh-panel li b{color:var(--navy)}
+  .bh-urgent{background:#fff6f2;border:1px solid var(--coral);border-left:4px solid var(--coral);
+    border-radius:10px;padding:12px 16px;margin-top:14px;font-size:12.5px;color:var(--ink)}
+  .bh-urgent b{color:var(--crit)}
+  .bh-note{font-size:12px;color:var(--grey);margin-top:12px}
+  .empty{background:#fff;border:1px dashed var(--line);border-radius:12px;padding:26px;text-align:center;
+    color:var(--grey);font-size:13px}
+
+  /* chart */
+  .chartwrap{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:18px 20px}
+  .chartwrap svg{width:100%;height:auto;display:block}
+  .clegend{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--grey);margin-top:6px}
+  .clegend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:middle}
+
+  /* action plan phases */
+  .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .phase{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);overflow:hidden}
+  .phase h4{margin:0;padding:12px 16px;color:#fff;font-size:14px}
+  .phase:nth-child(1) h4{background:var(--crit)}
+  .phase:nth-child(2) h4{background:var(--teal)}
+  .phase:nth-child(3) h4{background:var(--navy)}
+  .phase ul{margin:0;padding:12px 16px 16px 30px}
+  .phase li{font-size:12.5px;margin-bottom:9px}
+  .phase li b{color:var(--navy)}
+  footer{color:var(--grey);font-size:11.5px;margin-top:34px;text-align:center;line-height:1.6}
+  @media(max-width:820px){.kpis{grid-template-columns:repeat(2,1fr)}
+    .phases{grid-template-columns:1fr}.gaprow{grid-template-columns:110px 1fr}
+    .bh-stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="kick">Amazon Marketplace Intelligence</div>
+  <h1>Portfolio Dashboard — 5 Brands</h1>
+  <p>End-of-day management review · July 31, 2026 · Read-only analysis of live Amazon Seller Central + public storefront data</p>
+</header>
+
+<div class="wrap">
+  <div class="tabbar" id="tabbar"></div>
+
+  <!-- SUMMARY -->
+  <div class="panel active" id="tab-summary">
+    <div class="kpis">
+      <div class="kpi acc"><div class="n" id="k-acc">0</div><div class="l">Accomplished</div></div>
+      <div class="kpi pen"><div class="n" id="k-pen">0</div><div class="l">Pending / in progress</div></div>
+      <div class="kpi look"><div class="n" id="k-look">0</div><div class="l">Lookahead (31–90 days)</div></div>
+      <div class="kpi brand"><div class="n">5</div><div class="l">Brands reviewed</div></div>
+    </div>
+
+    <div class="sect">
+      <h2>Task status by brand</h2>
+      <p class="sub">Accomplished, pending, and lookahead task counts per brand. Draft figures — adjust as the tracker firms up.</p>
+      <div class="chartwrap">
+        <div id="chart"></div>
+        <div class="clegend">
+          <span><i style="background:#0A7A0A"></i>Accomplished</span>
+          <span><i style="background:#E07856"></i>Pending / in progress</span>
+          <span><i style="background:#1F3A5F"></i>Lookahead (31–90 days)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sect">
+      <h2>Prioritized 30-60-90 day plan</h2>
+      <p class="sub">Sequenced so the highest-ROI operational and value fixes come first.</p>
+      <div class="phases">
+        <div class="phase"><h4>Days 0–30 · Stop the bleeding</h4><ul id="p1"></ul></div>
+        <div class="phase"><h4>Days 31–60 · Build the moat</h4><ul id="p2"></ul></div>
+        <div class="phase"><h4>Days 61–90 · Scale &amp; extend</h4><ul id="p3"></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRAND PANELS injected here -->
+  <div id="brandpanels"></div>
+
+  <footer>
+    Prepared read-only from live Amazon data on July 31, 2026; figures fluctuate over time.<br>
+    Companion deliverables: per-brand Word reports · consolidated Excel workbook (with approval columns) · this dashboard.
+  </footer>
+</div>
+
+<script>
+const brands = [
+ {id:"begin-health", name:"Begin Health", pri:"High",
+  cat:"Kids gut health (prebiotics · probiotics · magnesium)",
+  hero:"Growing Up Prebiotic", price:"$39.95", rating:"4.4", reviews:"413",
+  issue:"Thin reviews vs. volume leaders; Magnesium invisible on its head term.",
+  opp:"Monetize existing organic strength ('Overall Pick') via reviews, S&S, and the 2'-FL HMO story.",
+  account:{status:"issue", label:"Action required — compliance",
+    note:`New GMP / Food &amp; Product Safety compliance flag on <span class="asin">B0GTQF2G7C</span> (GUMP28), dated 07/23 — listing at risk of removal, $129 at-risk. Needs a submit/appeal decision; <b>do not submit without approval.</b> AHR 708 (was 712).`,
+    trackerDate:"July 30, 2026",
+    tracker:[
+     ["Compliance (Account Health)","New GMP Dietary-Supplements / Food &amp; Product Safety certification flag on GUMP28 (B0GTQF2G7C), dated 07/23; listing at risk of removal, $129 at-risk; submission required — needs user decision.","Action Required","High"],
+     ["Compliance — child safety (NEW · 07/30)","2nd Food &amp; Product Safety issue surfaced 07/30: children's toy safety on the Poop Sticker Tracker 6-Pack (B0DL1B6TL5 / 6A-5J3Y-0FZB), $408 at-risk — listing already REMOVED; submission required. Separate from the GUMP28 GMP flag, which now carries a submission deadline of Oct 21 2026. AHR 704 (was 708), still Healthy — no rating impact. Both need your decision; do not submit without approval.","Action Required","High"],
+     ["Missing browse node","GUMP28 (B0GTQF2G7C) shows no Sales Rank (was 0); same ASIN now carries the GMP flag. Bundles exempt. No action needed.","No action needed","Medium"],
+     ["Voice of the Customer","NCX mix: Poor 1 · Good 3 · Excellent 6. Magnesium 56-Serv (B0GYCTWQX8) NCX 3.33% (1/30), performance/quality; one listing slipped Excellent→Good.","Open","Medium"],
+     ["Suppressed listings","2 search-suppressed (unchanged since 07/01): BeginBaby+Stickers (B0DNRNYPLR) &amp; Growing Up 56+Stickers (B0F16Y4LD5) — both bundles; single-packs active. Poop Stickers bundles have been discontinued — no action needed.","No action needed","Low"],
+     ["Shipment discrepancies","Closed shipments Located &lt; Expected (all 'Send again'): ORF2 −107, RDU2 −65, TEB9 −23, BNA6 −21, plus smaller. Possible FBA reimbursement.","Open","Low"],
+     ["Pricing","Pricing Health clean — 0 deactivated, 0 ineligible for Featured Offer, 0 pricing opportunities.","Clear","Low"],
+     ["Stranded inventory","0 stranded items — no active FBA inventory stranded.","Clear","Low"],
+     ["Missing Buy Box","0 genuine; all 9 active listings hold the Featured Offer. Only bundles show missing offers (expected).","Clear","Low"],
+     ["Promotions","6 total (was 4): 4 running coupons + 2 new upcoming Q4 Deals — Black Friday/Cyber Monday (Nov 19–30) &amp; Prime Big Deal Days, 3 ASINs each.","Info","Low"]
+    ],
+    kapoq:[
+     "<b>Account Health Rating:</b> 708 (down from 712) — no rating impact from the open items yet.",
+     "<b>Listings:</b> single-packs clear; only the 2 sticker bundles are search-suppressed. Hero listing scores 0.87–0.94.",
+     "<b>Sales:</b> MTD $138,258 vs $146,023 at the same point last month (MoM −5.5%); run rate $157,986.",
+     "<b>Restock:</b> BeginBaby Pre+Pro (BBPP28A) below restock level — 134 units recommended, order date 7/27.",
+     "<b>Listing Protection:</b> title / image / A+ change flags on BBPP28, GUMP28, GUMT56, GUPT56, GUPP28 — monitor for unwanted edits.",
+     "<b>Dimensions:</b> package-dimension change flags on several SKUs; max fee impact $0 (no size-tier change)."
+    ]},
+  gap:{us:413, usl:"413", them:16900, theml:"Culturelle 13.3K / MaryRuth's 16.9K*", themName:"Category leaders"},
+  frontend:{
+    date:"July 30, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Begin Health sole seller · A+ content. Every active, purchasable listing passed all four; all 7 flagged SKUs are Closed, Out-of-Stock, or Currently Unavailable.`,
+    stats:[["29","SKUs checked (26 unique ASINs)"],["7","SKUs flagged — all non-active"],
+      ["0","Defects on active, purchasable listings"],["0","Unauthorized resellers"],
+      ["$138.3K","MTD sales · run rate $158.0K"]],
+    rows:[
+     ["GUPT112 · B0FLVKHQRG","Out of stock",`<span class="fail">No Buy Box</span> — content healthy (6 bullets, A+)`],
+     ["GUMP84 · B0D8K4M7W1","Closed",`<span class="fail">0 bullets · no Buy Box</span>`],
+     ["GUPP28-2PK · B0D8LLBJCN","Closed",`<span class="fail">No Buy Box</span>`],
+     ["BeginBaby-Stickers · B0DNRNYPLR","Currently unavailable",`<span class="fail">No Buy Box</span> — content intact`],
+     ["56PCK-STICKER SET · B0F16Y4LD5","Currently unavailable",`<span class="fail">No Buy Box</span>`],
+     ["GUPP28tracker · B0DNRNCT15","Currently unavailable",`<span class="fail">No Buy Box</span> — promo/tracker bundle`],
+     ["6A-5J3Y-0FZB · B0DL1B6TL5","Inactive / 404",`<span class="fail">Fails all four</span> — live page is a 404`]
+    ],
+    urgent:`<b>Most urgent — the GMP compliance flag on GUMP28 (B0GTQF2G7C).</b> A new Dietary-Supplements GMP / Food &amp; Product Safety certification flag (dated 07/23) puts the listing at risk of removal ($129 at-risk) and it has lost its Sales Rank. It needs a submit/appeal decision — <b>do not submit without approval.</b> Next commercial priority: restock GUPT112 (B0FLVKHQRG), Out-of-Stock but otherwise fully healthy — replenishing restores its Buy Box immediately.`,
+    trend:`Trend vs. prior run: GUMT56 stays healthy (5 bullets) and GUMP28 remains live &amp; purchasable — but GUMP28 (B0GTQF2G7C) now carries a <b>new GMP compliance flag (07/23)</b> and has lost its Sales Rank, making the Food &amp; Product Safety case the top open item.`
+  },
+  findings:[
+   ["Reviews","Hero SKUs carry 413/152 reviews vs. 6,700–16,900 for the volume leaders.","Vine + automated review requests across heroes; target 1,000+ per hero.","High","Done","Manual review request ineligible — the automated review request was already activated for this ASIN."],
+   ["Organic ranking","Magnesium Drink doesn't rank on page one of 'magnesium for kids' (a sleep/calm market).","Re-map keywords &amp; copy to the hydration/constipation niche; buy relevance via ads.","High","Open",""],
+   ["Pricing/promo","Premium under-justified on page; shallow S&S; inconsistent coupons.","Coupons on all heroes; deepen Subscribe &amp; Save; anchor list price.","Medium","For approval","For client approval."],
+   ["Catalog","20+ near-identical bundles risk review fragmentation.","Consolidate to hero-single + 3–4 hero bundles.","Medium","Open",""]
+  ],
+  tasks:{accomplished:5, pending:3, lookahead:2}
+ },
+ {id:"blow-it-gum", name:"Blow It Gum", pri:"High",
+  cat:"Caffeinated xylitol energy gum",
+  hero:"Variety Pack (3-pack)", price:"$29.99", rating:"3.4", reviews:"37",
+  issue:"No stated caffeine (category's #1 spec); price 2–4× rivals; low rating.",
+  opp:"Own the fun-flavor energy niche; fix caffeine transparency, value, and reviews.",
+  account:{status:"ok", label:"Healthy — AHR 204",
+    note:`Account Health healthy — <b>AHR 204</b>, Order Defect Rate 0%, 0 compliance issues. One CX action item: Mental Mint 2-Pack (<span class="asin">B0H3K374NM</span>) stays Very Poor (NCX 14.29%). Mental Mint 3-Pack FBA has restocked and regained its Buy Box (07/30).`,
+    trackerDate:"July 30, 2026",
+    tracker:[
+     ["Voice of the Customer","Mental Mint 2-Pack (B0H3K374NM) stays Very Poor — NCX 14.29% (1 of 7), 2.5★, 100% 'performance/quality'. CX otherwise strong: 7 of 8 listings Excellent.","Action needed","High"],
+     ["Missing Buy Box / restock","0 offers ineligible; all 7 live ASINs hold the Featured Offer. Mental Mint 3-Pack FBA (MM3P-0782-FBA) has restocked and regained its Buy Box (07/30); A+ Content is now live on all three 2-Packs.","Resolved","Medium"],
+     ["Shipment discrepancies","2 closed shipments received 1 unit short: ABQ2 (98/99) &amp; HLI2 (124/125); newest PSC2 still receiving (149/150). Consider reimbursement.","Monitor","Medium"],
+     ["Suppressed listings","0 search-suppressed / 0 at-risk. 5 listings inactive from out-of-stock (Zapple, Crazy Colada, Mental Mint 3-Pack FBM/FBA, Variety Pack — all 3-packs).","Clear","Low"],
+     ["Pricing","No pricing issues — 0 pricing opportunities flagged, 0 offers deactivated for pricing errors.","Clear","Low"],
+     ["Stranded inventory","0 products stranded in fulfillment centers.","Clear","Low"],
+     ["Missing browse node","All ASINs show a valid Sales Rank (Grocery &amp; Gourmet Food, ~117,800). Variety pack exempt as bundle.","Clear","Low"],
+     ["Compliance (Account Health)","AHR 204, Order Defect Rate 0%, 0 issues across all 10 compliance categories. Note: emergency contact info still shows as not verified.","Clear","Low"],
+     ["Promotions","No active/running promotions. Promo-attributed last 30 days: $264.75 / 36 units / 282 glance views. For client approval if they want to reactivate the promotion.","For approval","Low"]
+    ],
+    kapoq:[
+     "<b>Account Health Rating:</b> 204 · Order Defect Rate 0% · 0 policy/compliance issues.",
+     "<b>Sales:</b> MTD $948 vs $1,290 at the same point last month (MoM −30.6%); run rate $1,130.",
+     "<b>Restock:</b> Mental Mint 3-Pack FBA restocked (Buy Box back); Zapple 3-Pack is now the low-stock watch (~11 units).",
+     "<b>Listing scores:</b> 0.95–0.98 across the catalog; none suppressed.",
+     "<b>Listing Protection:</b> variation / image / A+ change flags across SKUs — monitor for unwanted edits.",
+     "<b>Dimensions:</b> package-dimension change flags on all 6 SKUs; max fee impact $0 (no size-tier change)."
+    ]},
+  gap:{us:37, usl:"37", them:17600, theml:"Neuro Gum 17.6K", themName:"Neuro Gum"},
+  frontend:{
+    date:"July 30, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Blow It Gum sole seller · A+ content. 11 SKUs across 7 unique ASINs (the 3-Pack &amp; Variety SKUs pair an FBA + FBM offer on one page). All bullets pass, every live listing renders A+ Content, all live ASINs hold the Buy Box, and there are no unauthorized sellers. No open frontend defects — the Mental Mint 3-Pack Buy-Box loss is now resolved.`,
+    stats:[["11","SKUs checked (7 unique ASINs)"],["0","Buy Box defects — resolved"],
+      ["0","Missing A+ — resolved"],["0","Unauthorized resellers"],
+      ["$948","MTD sales · run rate $1.1K"]],
+    rows:[
+     ["Mental Mint 3-Pack · B0FN1XXM4N","Restocked — Buy Box regained",`<span style="color:var(--good);font-weight:700">✓ Resolved (07/30)</span> — FBA restocked, Featured Offer back live.`],
+     ["Zapple 3-Pack · B0FN1ZS2PG","Low stock (11 left)","Passes all four; Buy Box held by FBA twin — restock soon."]
+    ],
+    urgent:`<b>Mental Mint 3-Pack (B0FN1XXM4N) — resolved.</b> The FBA offer has restocked and regained the Buy Box (confirmed 07/30), closing the earlier pass→fail loss. Remaining watch: restock the Zapple 3-Pack (down to 11 units) before it goes unavailable; and the standing CX item on the Mental Mint 2-Pack (see Account health).`,
+    trend:`Change since last audit: the Mental Mint 3-Pack restocked and regained its Buy Box, and A+ Content is live on all three 2-Packs — both prior defects <b>resolved</b>. No open frontend defects remain; only the Zapple 3-Pack low-stock watch. No unauthorized sellers, Account Health Healthy, Featured Offer 100%.`
+  },
+  findings:[
+   ["Product spec","Listing states no caffeine content — the category's #1 decision spec.","State mg caffeine per piece in title, bullets, images, A+ immediately.","Critical","TBC, WIP",""],
+   ["Reviews","3.4★ variety pack (37 reviews) is disqualifying vs. 4.2–4.6 norm.","<span style=\"color:var(--good);font-weight:700\">✓ Automated review requests enabled (done).</span> Can also send manual review requests to make sure every eligible order is covered; diagnose the 3.4★ drivers; Vine for the rest.","High"],
+   ["Pricing","2–4× rivals per piece ($1.00–1.10 vs $0.25–0.62) with fewer pieces.","Larger-count format to reach $0.40–0.60/piece; add coupons + S&S.","High","WIP","Price per count — ongoing troubleshooting."],
+   ["Coupons","No coupons running on the hero SKUs.","Launch coupons on the hero SKUs to lift conversion and repeat purchase.","Medium","For approval","For client approval."]
+  ],
+  tasks:{accomplished:4, pending:2, lookahead:2}
+ },
+ {id:"elan-pure", name:"Elan Pure", pri:"Critical",
+  cat:"Non-toxic self tanner",
+  hero:"Gradual Self Tanner Foam", price:"$38.00", rating:"4.0", reviews:"57",
+  issue:"Account AT RISK; FBM 6–7 day shipping on hero; Closed/out-of-stock listings.",
+  opp:"Fix operations first, then own the hormone-safe / sensitive-skin clean-tan niche.",
+  account:{status:"ok", label:"Healthy — AHR 212",
+    note:`Account Health Rating <b>212 (Healthy)</b>, 0 policy violations, 0% ODR. Update 07/31: seller-fulfilled On-Time Delivery Rate <b>recovered to 90.74%</b> (49/54), back above the 90% target — the prior "At Risk" banner has cleared. Account health is clean.`,
+    trackerDate:"July 31, 2026",
+    tracker:[
+     ["Compliance (Account Health)","AHR 212 (Healthy), 0 policy violations across all 10 categories, 0% Order Defect Rate. Seller-fulfilled OTDR recovered to 90.74% (49/54), back above the 90% target — the prior 'At Risk' banner has cleared.","Resolved","Low"],
+     ["Shipment discrepancies","LBE1 (FBA199PG99RV) received 110/140 — 30-unit shortfall (~$570), Closed; follow up on reconciliation before the claim window closes. LAS1 95/96; HIA1 receiving (80/80).","Open","Low"],
+     ["Missing browse node","Korean Exfoliating Mitt (B0FWCL9TWN / EP-EM-001) still has no Sales Rank; review browse-node / category assignment. Carried over; currently out of stock. No action needed.","Closed","Low"],
+     ["Suppressed listings","No search-suppressed listings. 6 of 11 SKUs inactive from zero inventory (out-of-stock/closed) — a stock status, not content suppression.","Clear","Low"],
+     ["Pricing","0 offers deactivated for pricing errors, 0 ineligible for Featured Offer, 0 close to Featured Offer price.","Clear","Low"],
+     ["Stranded inventory","0 stranded — no active FBA inventory stuck in fulfillment centers.","Clear","Low"],
+     ["Missing Buy Box","Healthy — all active, in-stock listings hold the Featured Offer.","Clear","Low"],
+     ["Voice of the Customer","CX Health strong: 6 Excellent, 1 Good, 0 Poor / Very Poor across 7 offers. No NCX flags.","Clear","Low"],
+     ["Promotions","No active promotions; 3 Brand Tailored Promotions all Complete / expired.","Info","Low"]
+    ],
+    kapoq:[
+     "<b>Account Health Rating:</b> 212 (Healthy) · 0 policy violations · 0% Order Defect Rate.",
+     "<b>On-Time Delivery Rate:</b> recovered to 90.74% seller-fulfilled (49/54) — back above the 90% target; the At-Risk banner has cleared.",
+     "<b>Sales:</b> MTD $3,086 vs $2,904 at the same point last month (MoM +6.3%); run rate $3,218.",
+     "<b>Restock:</b> 0 SKUs below the restock trigger, but two heroes are effectively out — Korean Exfoliating Mitt (OOS) and Luxury Tanning Brush (1 unit).",
+     "<b>Listing scores:</b> 0.83–0.89; room to complete bullet points and descriptions.",
+     "<b>Listing Protection / Dimensions:</b> change flags present; max fee impact $0 (no size-tier change)."
+    ]},
+  gap:{us:57, usl:"57", them:27800, theml:"Beauty by Earth 27.8K", themName:"Beauty by Earth"},
+  frontend:{
+    date:"July 28, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Elan Pure sole seller · A+ content. 12 SKUs (11 auditable across 5 unique ASINs, plus 1 non-account bundle SKU). No unauthorized sellers and A+ renders on every page. Open defects: the Korean Exfoliating Mitt is unbuyable (out of stock) and the Luxury Tanning Brush shows only 4 bullets while down to 1 unit. The account-level OTDR "At Risk" banner noted earlier has since cleared (see Account health).`,
+    stats:[["12","SKUs checked (5 unique ASINs)"],["4","SKUs flagged (2 ASINs)"],
+      ["0","Unauthorized resellers"],["0","Missing A+"],
+      ["$2,784","MTD sales · run rate $3.3K"]],
+    rows:[
+     ["Korean Exfoliating Mitt · B0FWCL9TWN","Currently unavailable",`<span class="fail">Buy Box lost</span> — both FBM &amp; FBA out of stock; unbuyable. 5 bullets &amp; A+ OK.`],
+     ["Luxury Tanning Brush · B0FMVBSMYP","In stock — 1 unit left",`<span class="fail">Only 4 bullets</span> (needs ≥5); Buy Box won but critically low stock. <b>NEW</b>`]
+    ],
+    urgent:`<b>Most urgent — restock the Korean Exfoliating Mitt (B0FWCL9TWN).</b> It is live but "Currently unavailable" on both FBM and FBA, so it earns zero sales while still drawing browse and ad traffic — the only fully unbuyable ASIN. Next: restock the Luxury Tanning Brush (B0FMVBSMYP), down to 1 unit, and add a 5th About-this-item bullet to clear its content fail. The account-level "At Risk" (seller-fulfilled OTDR) banner has since cleared — OTDR recovered to 90.74%.`,
+    trend:`Change since last audit: Luxury Tanning Brush (B0FMVBSMYP) inventory has fallen 14 → 9 → 7 → 5 → 1 and is about to go out of stock like the mitt. The account "At Risk" banner has cleared — seller-fulfilled OTDR recovered to 90.74%. All other frontend results unchanged — no unauthorized sellers, A+ renders everywhere.`
+  },
+  findings:[
+   ["Account health","Account AT RISK; 6 listings flagged 'Fix'; several Closed/out-of-stock.","Resolve At-Risk issues and the 6 'Fix' listings; reactivate dead SKUs.","Critical","Open",""],
+   ["Fulfillment","Buyable hero ships FBM with 6–7 day delivery vs. Prime rivals.","Move heroes to FBA / Prime fulfillment.","Critical","Open",""],
+   ["Listing / browse node","Korean Exfoliating Mitt (B0FWCL9TWN / EP-EM-001) missing Sales Rank / browse node.","Review browse-node / category assignment once restocked.","Low","Closed","OOS."],
+   ["Positioning","'Natural self tanner' lane dominated by Beauty by Earth (27.8K, $36, Prime).","Narrow to hormone-safe / pregnancy / sensitive-skin clean-tan.","High","Closed","Has been added to the generic search-term attribute."],
+   ["Reviews/product","Thin reviews; polarized 4.0★ foam; 'sticky' + inconsistent-color complaints.","Vine + review requests; color/application content; test a shade option.","High","Closed","Manual review request not eligible — orders were already auto-requested within the past 90 days."],
+   ["Promotions","No coupons, S&S, or list-price anchoring in a repeat-purchase category.","Turn on coupons + S&S + list-price anchor; add a routine kit.","Medium","For approval","For approval."]
+  ],
+  tasks:{accomplished:3, pending:2, lookahead:2}
+ },
+ {id:"klar-labs", name:"Klar Labs", pri:"High",
+  cat:"Energy + hydration drink mix",
+  hero:"Energy + Hydration Mix (14pk)", price:"$30.00", rating:"5.0", reviews:"~23",
+  issue:"Tiny review base; top-of-category price reliant on a 35% coupon; no video.",
+  opp:"Convert a loved all-in-one product (energy+hydration+focus) into scale.",
+  account:{status:"ok", label:"Healthy — AHR 204",
+    note:`Account Health Rating <b>204 (Healthy)</b>, 0 policy violations across all 10 categories, 0% Order Defect Rate (0/273). One action item: 6 ASINs are out of stock and have lost the Featured Offer — restock to regain the Buy Box.`,
+    trackerDate:"July 28, 2026",
+    tracker:[
+     ["Missing Buy Box / restock","6 out-of-stock ASINs lack a Featured Offer (due to OOS). All in-stock active ASINs hold the Buy Box. Restock the 6 OOS ASINs to regain it.","Action needed","High"],
+     ["Suppressed listings","0 search-suppressed / 0 at-risk. 6 listings inactive from out-of-stock — need replenishment to restore Buy Box and sales.","Monitor","Low"],
+     ["Compliance (Account Health)","AHR 204 (Healthy), 0 violations across all 10 compliance categories, ODR 0% (0/273 orders).","Clear","Low"],
+     ["Missing browse node","All listings retain a Sales Rank in Grocery &amp; Gourmet Food (~44k). 0 missing browse node.","Clear","Low"],
+     ["Pricing","0 offers deactivated for pricing errors, 0 ineligible for Featured Offer, 0 close to Featured Offer price.","Clear","Low"],
+     ["Stranded inventory","0 stranded products.","Clear","Low"],
+     ["Shipment discrepancies","No shipments in the Manage Shipments view; no closed-shipment discrepancies.","Clear","Low"],
+     ["Voice of the Customer","CX Health strong: 4 Excellent, 1 Good across 5 offers; 0 Poor / Very Poor. NCX 0–1.96%.","Clear","Low"],
+     ["Promotions","0 active promotions — no standard or Brand Tailored promotions running.","Info","Low"]
+    ],
+    kapoq:[
+     "<b>Account Health Rating:</b> 204 (Healthy) · 0 policy violations · 0% Order Defect Rate (0/273).",
+     "<b>Sales:</b> MTD $5,850 vs $5,280 at the same point last month (MoM +10.2%); run rate $6,648.",
+     "<b>Restock:</b> 4 flavors below the restock trigger (order 7/28) — Variety Pack 139, Cactus Pear 97, Piña Colada 74, Pineapple Ginger 66 units.",
+     "<b>Listing scores:</b> 0.84 across flavors; room to complete titles, bullets, and descriptions.",
+     "<b>Listing Protection:</b> image / A+ / BSR / variation change flags across SKUs — monitor for unwanted edits."
+    ]},
+  gap:{us:23, usl:"~23", them:7100, theml:"CELSIUS 7.1K", themName:"CELSIUS"},
+  frontend:{
+    date:"July 28, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Klar Labs sole seller · A+ content. 10 SKUs across 5 unique ASINs (each flavor pairs an FBM + FBA offer on one page). All bullets pass, every page renders A+, and there are no unauthorized sellers. The one open defect is Blood Orange, out of stock with its Buy Box lost.`,
+    stats:[["10","SKUs checked (5 unique ASINs)"],["2","SKUs flagged (1 ASIN)"],
+      ["0","Unauthorized resellers"],["0","Missing A+"],
+      ["$5,850","MTD sales · run rate $6.6K"]],
+    rows:[
+     ["Blood Orange · B0GNZNHQ14","Currently unavailable",`<span class="fail">Buy Box lost</span> — both FBM &amp; FBA out of stock; unbuyable. Bullets &amp; A+ OK.`],
+     ["Variety Pack · B0GNZLMK1D","Low stock (ships Aug 9–13)","Still wins the Buy Box; restock before it goes unavailable. Fix A+ copy (describes Piña Colada, not the variety pack)."]
+    ],
+    urgent:`<b>Most urgent — restore the Buy Box on Blood Orange (B0GNZNHQ14).</b> It reads "Currently unavailable" with zero on-hand FBA and no FBM offer, so it can't convert. Replenish FBA stock (or activate the FBM offer) to bring the Featured Offer back live. Next: restock the Variety Pack (B0GNZLMK1D), now showing Aug 9–13 delivery, before it follows.`,
+    trend:`Frontend results are otherwise clean: all 5 ASINs pass bullets, A+, and sole-seller checks. Watch item — the Variety Pack's "About this item" copy mistakenly describes the Piña Colada flavor rather than the variety pack; worth a backend fix.`
+  },
+  findings:[
+   ["Reviews","~23 reviews (all 5.0★) vs. thousands for CELSIUS/Alani/Ghost.","Vine + automated review requests; scale toward the hundreds.","High","Done","Manual not eligible — the system has already auto-sent review requests to customers."],
+   ["Content","Only 3 images and NO video on a premium beverage.","Add lifestyle + product video; rebuild image stack with all-in-one infographic.","High","WIP","Video — checking with the Graphics team."],
+   ["Pricing","Full price ($2.14/packet) is category top end; relies on a 35% coupon.","Reset everyday price to low-$20s; keep S&S anchor; add value multipack.","High","Open",""],
+   ["SEO/spec","150mg caffeine not surfaced; not ranking on 'energy drink mix'.","Surface 150mg + all-in-one; Sponsored Products on head + long-tail.","Medium","TBC","Need confirmation on the 150 mg caffeine content."],
+   ["Positioning","Differentiated all-in-one but low visibility.","Commit fully to 'all-in-one clean energy + hydration + focus'.","Medium","Done","'All-in-one clean energy + hydration + focus' added to the backend for indexing. Next: target via a Sponsored Products (SPA) campaign?"]
+  ],
+  tasks:{accomplished:2, pending:3, lookahead:2}
+ },
+ {id:"vallee-de-galene", name:"Vallee de Galene", pri:"High",
+  cat:"Chicory coffee alternative (liquid concentrate)",
+  hero:"Chicory Liquid Concentrate", price:"$29.99", rating:"5.0", reviews:"4",
+  issue:"Value hidden (~2× sticker); Subscribe & Save shows no discount; packaging damage.",
+  opp:"Make value visible; own the no-brew liquid coffee-alternative niche.",
+  account:{status:"ok", label:"Healthy — AHR 200",
+    note:`Account Health Rating <b>200 (Healthy)</b>, 0 policy violations, 0% Order Defect Rate (0/50). One CX action item: Vanilla (<span class="asin">B0GGJ4L5HR</span>) stays Poor (NCX 5%, all "damaged item") — review packaging on the 250 ml bottles. Cocoa recovered Very Poor → Excellent.`,
+    trackerDate:"July 28, 2026",
+    tracker:[
+     ["Voice of the Customer","Vanilla (B0GGJ4L5HR) still Poor — NCX 5% (1 of 20), sole reason 'Damaged item' (100%). Cocoa recovered Very Poor → Excellent; other 3 flavors Excellent. Review packaging / protection on the 250 ml bottles.","Action Required","Medium"],
+     ["Suppressed listings","0 search-suppressed / 0 at-risk. 5 FBM SKUs inactive from out-of-stock (not suppressed).","Clear","Low"],
+     ["Pricing","0 offers deactivated for pricing errors, 0 ineligible for Featured Offer, 0 close to Featured Offer price.","Clear","Low"],
+     ["Stranded inventory","0 stranded — no active FBA inventory in fulfillment centers.","Clear","Low"],
+     ["Missing Buy Box","No defect — active FBA SKUs hold the Featured Offer at $29.99. OOS FBM SKUs show no offer (expected).","Clear","Low"],
+     ["Missing browse node","All 5 listings indexed with a Sales Rank in Grocery &amp; Gourmet Food (~68.7k). 0 missing browse nodes.","Clear","Low"],
+     ["Compliance (Account Health)","AHR 200 (Healthy), 0 policy violations across all categories, 0% Order Defect Rate (0/50).","Clear","Low"],
+     ["Shipment discrepancies","No discrepancies — Inbound Performance returned no results; no FBA inbound shipments.","Clear","Low"],
+     ["Promotions","1 active: 'VDG Tiered Discounts' (% off) running 07/08–12/31, budget $25,000, 0.47% utilized, 3 orders.","Info","Low"]
+    ],
+    kapoq:[
+     "<b>Account Health Rating:</b> 200 (Healthy) · 0 policy violations · 0% Order Defect Rate (0/50).",
+     "<b>Sales:</b> MTD $1,288 vs $550 at the same point last month (MoM +134%); run rate $1,478.",
+     "<b>Restock:</b> 0 SKUs below the restock trigger, but Cocoa (B0GGHN9Y6Y) is down to 18 units — watch.",
+     "<b>Listing scores:</b> 0.87–0.89 across flavors; Cocoa lags at 0.68 (missing A+).",
+     "<b>Promotions:</b> 'VDG Tiered Discounts' live through 12/31; a $23.99 coupon runs on Lemon only.",
+     "<b>Listing Protection / Dimensions:</b> change flags present; max fee impact $0 (no size-tier change)."
+    ]},
+  gap:{us:4, usl:"4", them:28600, theml:"Cafe Du Monde 28.6K", themName:"Cafe Du Monde"},
+  frontend:{
+    date:"July 28, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Vallee de Galene sole seller · A+ content. 10 SKUs across 5 unique ASINs (Chicory Coffee flavors, each pairing an FBA + FBM offer on one page). All bullets pass, every listing wins the Buy Box, and there are no unauthorized sellers. The one open defect is missing A+ on the Cocoa flavor.`,
+    stats:[["10","SKUs checked (5 unique ASINs)"],["2","SKUs flagged (1 ASIN)"],
+      ["1","Missing A+ (Cocoa)"],["0","Unauthorized resellers"],
+      ["$1,288","MTD sales · run rate $1.5K"]],
+    rows:[
+     ["Cocoa · B0GGHN9Y6Y","Live · 18 units left",`<span class="fail">Missing A+ Content</span> — only a plain-text description; the comparison-chart module on the other 4 flavors is absent. Wins Buy Box, $29.99.`],
+     ["Vanilla · B0GGJ4L5HR","Live — Buy Box won","Passes all four frontend checks; watch — recurring 'damaged item' CX complaints (see Account health)."]
+    ],
+    urgent:`<b>Most urgent — publish / repair the A+ Content on Cocoa (B0GGHN9Y6Y).</b> Cocoa is active, in stock and winning the Buy Box, so every shopper sees a bare product page while the other four flavors show the full comparison module — a live conversion cost that has carried across consecutive audits. Apply the same A+ comparison-chart module used on the other flavors. Also watch Cocoa's stock (18 units left).`,
+    trend:`No change since the previous audit — the Cocoa A+ defect is unchanged (the only frontend defect across all 10 SKUs). Movement this run is inventory: Cocoa dropped to 18 units. Pricing ($29.99) and the Lemon-only $23.99 coupon are unchanged; BSR #68,741 Grocery / #113 Coffee Substitutes.`
+  },
+  findings:[
+   ["Value perception","$29.99 reads ~2× rivals; ~$0.60/cup value not shown.","Add a value infographic (~50 servings, ~$0.60/cup, no-brew).","High","Open",""],
+   ["Promotions","Subscribe & Save shows NO discount — key lever switched off.","Turn on a real S&S discount + acquisition coupon + list-price anchor.","High","For approval","For client approval to turn on a real S&S discount."],
+   ["Fulfillment","Reviews report bottles shipped in bubble mailers arriving damaged.","Switch to protective boxing to protect ratings.","High","WIP","Switching to protective boxing to protect ratings."],
+   ["Reviews","Only 4 reviews (all 5.0★) vs. thousands for incumbents.","Vine + automated review requests; build toward the hundreds.","High","Done","Manual not eligible — the system has already auto-sent review requests to customers."],
+   ["Reach/SEO","Indexes on 'chicory' but under-targets 'coffee alternative/substitute'.","Add coffee-alternative terms + ~50 servings to title/backend; broaden ads.","Medium","For approval","For client approval to add coffee-alternative terms + ~50 servings to title/backend and broaden ads."]
+  ],
+  tasks:{accomplished:1, pending:3, lookahead:2}
+ }
+];
+
+const plan = {
+ p1:[
+  ["Elan Pure","resolve At-Risk account health + 6 'Fix' listings; reactivate dead SKUs"],
+  ["Elan Pure","move hero foam + face mist to FBA / Prime fulfillment"],
+  ["Blow It Gum","state caffeine mg per piece in title, bullets, images, A+"],
+  ["All brands","enroll heroes in Vine + automated review requests"],
+  ["Klar Labs","add product/lifestyle video; rebuild image stack (3→7–8)"],
+  ["Vallee de Galene","add value infographic; turn on real S&S discount; fix packaging"],
+  ["Begin Health","rebuild Magnesium content + add 2'-FL HMO infographic"],
+  ["Klar Labs","reset everyday price to low-$20s; keep S&S anchor"]
+ ],
+ p2:[
+  ["Begin Health","Premium A+ 'science of HMO' + fix Magnesium keyword targeting"],
+  ["Elan Pure","before/after (multi skin tone) + application video; hormone-safe A+"],
+  ["Blow It Gum","launch larger-count format ($0.40–0.60/piece); rebuild bullets"],
+  ["Klar Labs","value multipack + 'all-in-one wins' A+; scale Sponsored Products"],
+  ["Vallee de Galene","modular A+ + flavor sampler / multi-bottle pack; scale ads"],
+  ["All brands","scale Sponsored Products on head + differentiated long-tail terms"]
+ ],
+ p3:[
+  ["All brands","review engine toward targets; align deals to seasonal peaks"],
+  ["Begin Health","line-extension scoping (immunity, calm magnesium); subscription"],
+  ["Elan Pure","test Medium/Dark shade; pursue clean-beauty / derm validation"],
+  ["Klar Labs","new premium flavor; test caffeine tier; creator partnerships"],
+  ["Vallee de Galene","trial size + seasonal flavors; target mainstream coffee-reducers"],
+  ["Blow It Gum","new bold flavor; gaming/creator partnerships"]
+ ]
+};
+
+/* ---------- TABS ---------- */
+const tabbar = document.getElementById('tabbar');
+let tabsHTML = `<span class="tablabel">View by brand →</span><button class="tab active" data-tab="summary">Summary</button>`;
+tabsHTML += brands.map(b=>`<button class="tab" data-tab="${b.id}">${b.name}<span class="dot ${b.account.status==='issue'?'issue':'ok'}"></span></button>`).join('');
+tabbar.innerHTML = tabsHTML;
+
+/* ---------- BRAND PANELS ---------- */
+function findingsTable(rows){
+  const hasStatus = rows.some(f=>f[4]);
+  const cls=s=>({'Closed':'stat-closed','Close':'stat-closed','Open':'stat-open','For approval':'stat-monitor','TBC, WIP':'stat-monitor','WIP':'stat-monitor','TBC':'stat-monitor','Done':'stat-clear'}[s]||'');
+  return `<table><thead><tr><th>Area</th><th>Finding</th><th>Recommendation</th>${hasStatus?'<th>Status</th>':''}<th>Priority</th></tr></thead>
+   <tbody>${rows.map(f=>`<tr><td>${f[0]}</td><td>${f[1]}</td><td>${f[2]}${f[5]?`<br><span class="note-sm">Note: ${f[5]}</span>`:''}</td>${hasStatus?`<td class="stbadge ${cls(f[4])}">${f[4]||''}</td>`:''}<td class="pri ${f[3]}">${f[3]}</td></tr>`).join('')}</tbody></table>`;
+}
+function accountTrackerTable(rows,date,brandName){
+  const cls=s=>({'Action Required':'stat-ar','Action needed':'stat-ar','Open':'stat-open','Monitor':'stat-monitor','For replenishment':'stat-monitor','For approval':'stat-monitor','Clear':'stat-clear','None':'stat-clear','No action needed':'stat-clear','Resolved':'stat-clear','Closed':'stat-closed','Info':'stat-info'}[s]||'');
+  return `<table style="margin-top:12px">
+   <thead><tr><th>Area</th><th>Finding</th><th>Status</th><th>Priority</th></tr></thead>
+   <tbody>${rows.map(r=>`<tr><td class="b-badge">${r[0]}</td><td>${r[1]}</td><td class="stbadge ${cls(r[2])}">${r[2]}</td><td class="pri ${r[3]}">${r[3]}</td></tr>`).join('')}</tbody></table>
+   <p class="bh-note">Source: ${brandName||'Begin Health'} Account Health Tracker · ${date}. Seller Central reviewed read-only.</p>`;
+}
+function kapoqPanel(notes){
+  return `<div class="bh-panel"><h3>Account metrics — KAPOQ</h3><ul>${notes.map(n=>`<li>${n}</li>`).join('')}</ul></div>`;
+}
+function gapBlock(b){
+  const maxLog=Math.log10(30000);
+  const uw=Math.max(4,Math.log10(b.gap.us+1)/maxLog*100);
+  const tw=Math.max(4,Math.log10(b.gap.them+1)/maxLog*100);
+  return `<div class="gap">
+    <div class="gaprow"><div class="name"><b>${b.name}</b></div>
+      <div class="bar us"><span style="width:${uw}%">${b.gap.usl} — our hero</span></div></div>
+    <div class="gaprow"><div class="name">${b.gap.themName}</div>
+      <div class="bar them"><span style="width:${tw}%">${b.gap.theml}</span></div></div>
+    <div class="legend"><b class="us">■</b> our hero &nbsp; <b class="them">■</b> category leader &nbsp;·&nbsp; bars use a log scale.</div>
+  </div>`;
+}
+function frontendBlock(b){
+  if(!b.frontend){
+    return `<div class="empty">No frontend (live-listing) audit was run for <b>${b.name}</b> today.</div>`;
+  }
+  const f=b.frontend;
+  return `
+   <div class="bh-stats">${f.stats.map(s=>`<div class="bh-stat"><div class="n">${s[0]}</div><div class="l">${s[1]}</div></div>`).join('')}</div>
+   <div class="bh-panel">
+     <h3>Frontend checks — live listings · ${f.date}</h3>
+     <p>${f.intro}</p>
+     <table><thead><tr><th>Brand</th><th>SKU / ASIN</th><th>State</th><th>Issue</th></tr></thead>
+       <tbody>${f.rows.map(r=>`<tr><td class="b-badge">${b.name}</td><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</tbody></table>
+   </div>
+   <div class="bh-urgent">${f.urgent}</div>
+   <p class="bh-note">${f.trend}</p>`;
+}
+document.getElementById('brandpanels').innerHTML = brands.map(b=>`
+ <div class="panel" id="tab-${b.id}">
+   <div class="sect">
+     <h2>Portfolio at a glance</h2>
+     <p class="sub">Hero product, key metrics, biggest issue, and biggest opportunity.</p>
+     <div class="card">
+       <div class="top"><div><h3>${b.name}</h3><div class="cat">${b.cat}</div></div>
+         <span class="pill ${b.pri==='Critical'?'crit':'high'}">${b.pri}</span></div>
+       <div class="body">
+         <div class="metrics">
+           <div class="metric">Hero<b>${b.hero}</b></div>
+           <div class="metric">Price<b>${b.price}</b></div>
+           <div class="metric">Rating<b>${b.rating}★</b></div>
+           <div class="metric">Reviews<b>${b.reviews}</b></div>
+         </div>
+         <div class="row issue"><span class="tag">Biggest issue · </span>${b.issue}</div>
+         <div class="row opp"><span class="tag">Biggest opportunity · </span>${b.opp}</div>
+       </div>
+     </div>
+   </div>
+
+   <div class="sect">
+     <h2>Account health checks</h2>
+     <p class="sub">Read-only account status. Green = no urgent issues; red = active issue under troubleshooting.</p>
+     <div class="ahcard ${b.account.status==='issue'?'issue':''}">
+       <div class="ahtop"><h3>${b.name}</h3><span class="st">${b.account.label}</span></div>
+       <div class="ahnote">${b.account.note}</div>
+     </div>
+     ${b.account.tracker?accountTrackerTable(b.account.tracker,b.account.trackerDate,b.name):''}
+     ${b.account.kapoq?kapoqPanel(b.account.kapoq):''}
+   </div>
+
+   <div class="sect">
+     <h2>Frontend checks</h2>
+     <p class="sub">Live detail-page audit: bullets, Buy Box, authorized seller, and A+ content.</p>
+     ${frontendBlock(b)}
+   </div>
+
+   <div class="sect">
+     <h2>The through-line: the review gap</h2>
+     <p class="sub">Our hero (coral) vs. the category leader (navy). Closing this is the most consistent priority.</p>
+     ${gapBlock(b)}
+   </div>
+
+   <div class="sect">
+     <h2>Findings &amp; recommendations</h2>
+     <p class="sub">Full detail, owners, and manager sign-off columns are in the Excel workbook.</p>
+     ${findingsTable(b.findings)}
+   </div>
+ </div>`).join('');
+
+/* ---------- SUMMARY: KPIs + chart + plan ---------- */
+const totals = brands.reduce((a,b)=>({acc:a.acc+b.tasks.accomplished, pen:a.pen+b.tasks.pending, look:a.look+b.tasks.lookahead}),{acc:0,pen:0,look:0});
+document.getElementById('k-acc').textContent = totals.acc;
+document.getElementById('k-pen').textContent = totals.pen;
+document.getElementById('k-look').textContent = totals.look;
+
+function renderChart(){
+  const W=760,H=340, mL=40,mR=16,mT=16,mB=64;
+  const iw=W-mL-mR, ih=H-mT-mB;
+  const series=[["accomplished","#0A7A0A"],["pending","#E07856"],["lookahead","#1F3A5F"]];
+  const maxV=Math.max(...brands.map(b=>Math.max(b.tasks.accomplished,b.tasks.pending,b.tasks.lookahead)),1);
+  const yMax=Math.ceil(maxV);
+  const gw=iw/brands.length;
+  const bw=Math.min(30,(gw-24)/3);
+  const x=i=>mL+i*gw;
+  const y=v=>mT+ih-(v/yMax)*ih;
+  let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Task status by brand">`;
+  for(let t=0;t<=yMax;t++){
+    const yy=y(t);
+    svg+=`<line x1="${mL}" y1="${yy}" x2="${W-mR}" y2="${yy}" stroke="#eef3f3"/>`;
+    svg+=`<text x="${mL-8}" y="${yy+4}" text-anchor="end" font-size="11" fill="#8a9a9a">${t}</text>`;
+  }
+  brands.forEach((b,i)=>{
+    const gx=x(i)+(gw-bw*3-16)/2;
+    series.forEach((s,j)=>{
+      const v=b.tasks[s[0]];
+      const bx=gx+j*(bw+8);
+      const by=y(v), bh=mT+ih-by;
+      svg+=`<rect x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="3" fill="${s[1]}"><title>${b.name} — ${s[0]}: ${v}</title></rect>`;
+      if(v>0) svg+=`<text x="${(bx+bw/2).toFixed(1)}" y="${(by-4).toFixed(1)}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#5A5A5A">${v}</text>`;
+    });
+    const cx=x(i)+gw/2;
+    svg+=`<text x="${cx.toFixed(1)}" y="${H-mB+22}" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1F3A5F">${b.name}</text>`;
+  });
+  svg+=`<line x1="${mL}" y1="${mT+ih}" x2="${W-mR}" y2="${mT+ih}" stroke="#cdd9d9"/>`;
+  svg+=`</svg>`;
+  document.getElementById('chart').innerHTML=svg;
+}
+renderChart();
+
+function renderPlan(id,items){
+  document.getElementById(id).innerHTML = items.map(i=>`<li><b>${i[0]}:</b> ${i[1]}</li>`).join('');
+}
+renderPlan('p1',plan.p1); renderPlan('p2',plan.p2); renderPlan('p3',plan.p3);
+
+/* ---------- tab switching ---------- */
+tabbar.addEventListener('click',e=>{
+  const btn=e.target.closest('.tab'); if(!btn) return;
+  const id=btn.dataset.tab;
+  [...tabbar.children].forEach(c=>c.classList.toggle('active',c===btn));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+id));
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>

@@ -152,7 +152,7 @@
 <header>
   <div class="kick">Amazon Marketplace Intelligence</div>
   <h1>Portfolio Dashboard — 5 Brands</h1>
-  <p>End-of-day management review · July 31, 2026 · Read-only analysis of live Amazon Seller Central + public storefront data</p>
+  <p>End-of-day management review · August 1, 2026 · Read-only analysis of live Amazon Seller Central + public storefront data</p>
 </header>
 
 <div class="wrap">
@@ -195,7 +195,7 @@
   <div id="brandpanels"></div>
 
   <footer>
-    Prepared read-only from live Amazon data on July 31, 2026; figures fluctuate over time.<br>
+    Prepared read-only from live Amazon data on August 1, 2026; figures fluctuate over time.<br>
     Companion deliverables: per-brand Word reports · consolidated Excel workbook (with approval columns) · this dashboard.
   </footer>
 </div>
@@ -409,9 +409,9 @@ const brands = [
   opp:"Make value visible; own the no-brew liquid coffee-alternative niche.",
   account:{status:"ok", label:"Healthy — AHR 200",
     note:`Account Health Rating <b>200 (Healthy)</b>, 0 policy violations, 0% Order Defect Rate (0/50). One CX action item: Vanilla (<span class="asin">B0GGJ4L5HR</span>) stays Poor (NCX 5%, all "damaged item") — review packaging on the 250 ml bottles. Cocoa recovered Very Poor → Excellent.`,
-    trackerDate:"July 28, 2026",
+    trackerDate:"August 1, 2026",
     tracker:[
-     ["Voice of the Customer","Vanilla (B0GGJ4L5HR) still Poor — NCX 5% (1 of 20), sole reason 'Damaged item' (100%). Cocoa recovered Very Poor → Excellent; other 3 flavors Excellent. Review packaging / protection on the 250 ml bottles.","Action Required","Medium"],
+     ["Voice of the Customer","Vanilla (B0GGJ4L5HR) still Poor — NCX 5% (1 of 20 orders), sole reason 'Damaged item' (100%). No Very Poor listings. CX split across flavors: 3 Excellent / 1 Poor. Cocoa remains recovered (Excellent). Review packaging / protection on the 250 ml bottles.","Action Required","Medium"],
      ["Suppressed listings","0 search-suppressed / 0 at-risk. 5 FBM SKUs inactive from out-of-stock (not suppressed).","Clear","Low"],
      ["Pricing","0 offers deactivated for pricing errors, 0 ineligible for Featured Offer, 0 close to Featured Offer price.","Clear","Low"],
      ["Stranded inventory","0 stranded — no active FBA inventory in fulfillment centers.","Clear","Low"],
@@ -423,11 +423,11 @@ const brands = [
     ],
     kapoq:[
      "<b>Account Health Rating:</b> 200 (Healthy) · 0 policy violations · 0% Order Defect Rate (0/50).",
-     "<b>Sales:</b> MTD $1,288 vs $550 at the same point last month (MoM +134%); run rate $1,478.",
-     "<b>Restock:</b> 0 SKUs below the restock trigger, but Cocoa (B0GGHN9Y6Y) is down to 18 units — watch.",
-     "<b>Listing scores:</b> 0.87–0.89 across flavors; Cocoa lags at 0.68 (missing A+).",
+     "<b>Sales:</b> MTD $1,312.51 vs $599.76 at the same point last month (MoM +119%); run rate $1,330.",
+     "<b>Restock:</b> 0 SKUs below the restock trigger this run — inventory back above reorder points (Cocoa cleared its earlier low-stock watch).",
+     "<b>Listing scores:</b> 0.87–0.89 across flavors; Cocoa lags at 0.68 (missing A+). 30-day sales: Pure Chicory $444, Vanilla $348, Cocoa $329, Elderberry $167, Lemon $0.",
      "<b>Promotions:</b> 'VDG Tiered Discounts' live through 12/31; a $23.99 coupon runs on Lemon only.",
-     "<b>Listing Protection / Dimensions:</b> change flags present; max fee impact $0 (no size-tier change)."
+     "<b>Listing Protection / Dimensions:</b> Title + Images flagged as unprotected across all 5 ASINs (A+ flagged on 4); Dimensions show 0 size-tier changes, max fee impact $0."
     ]},
   gap:{us:4, usl:"4", them:28600, theml:"Cafe Du Monde 28.6K", themName:"Cafe Du Monde"},
   frontend:{
@@ -435,7 +435,7 @@ const brands = [
     intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Vallee de Galene sole seller · A+ content. 10 SKUs across 5 unique ASINs (Chicory Coffee flavors, each pairing an FBA + FBM offer on one page). All bullets pass, every listing wins the Buy Box, and there are no unauthorized sellers. The one open defect is missing A+ on the Cocoa flavor.`,
     stats:[["10","SKUs checked (5 unique ASINs)"],["2","SKUs flagged (1 ASIN)"],
       ["1","Missing A+ (Cocoa)"],["0","Unauthorized resellers"],
-      ["$1,288","MTD sales · run rate $1.5K"]],
+      ["$1,313","MTD sales · run rate $1.3K"]],
     rows:[
      ["Cocoa · B0GGHN9Y6Y","Live · 18 units left",`<span class="fail">Missing A+ Content</span> — only a plain-text description; the comparison-chart module on the other 4 flavors is absent. Wins Buy Box, $29.99.`],
      ["Vanilla · B0GGJ4L5HR","Live — Buy Box won","Passes all four frontend checks; watch — recurring 'damaged item' CX complaints (see Account health)."]

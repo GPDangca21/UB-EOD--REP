@@ -152,7 +152,7 @@
 <header>
   <div class="kick">Amazon Marketplace Intelligence</div>
   <h1>Portfolio Dashboard — 5 Brands</h1>
-  <p>End-of-day management review · August 1, 2026 · Read-only analysis of live Amazon Seller Central + public storefront data</p>
+  <p>End-of-day management review · August 4, 2026 · Read-only analysis of live Amazon Seller Central + public storefront data</p>
 </header>
 
 <div class="wrap">
@@ -195,7 +195,7 @@
   <div id="brandpanels"></div>
 
   <footer>
-    Prepared read-only from live Amazon data on August 1, 2026; figures fluctuate over time.<br>
+    Prepared read-only from live Amazon data on August 4, 2026; figures fluctuate over time.<br>
     Companion deliverables: per-brand Word reports · consolidated Excel workbook (with approval columns) · this dashboard.
   </footer>
 </div>
@@ -208,25 +208,26 @@ const brands = [
   issue:"Thin reviews vs. volume leaders; Magnesium invisible on its head term.",
   opp:"Monetize existing organic strength ('Overall Pick') via reviews, S&S, and the 2'-FL HMO story.",
   account:{status:"issue", label:"Action required — compliance",
-    note:`New GMP / Food &amp; Product Safety compliance flag on <span class="asin">B0GTQF2G7C</span> (GUMP28), dated 07/23 — listing at risk of removal, $129 at-risk. Needs a submit/appeal decision; <b>do not submit without approval.</b> AHR 708 (was 712).`,
-    trackerDate:"July 30, 2026",
+    note:`Two open Food &amp; Product Safety cases: (1) GMP certification on <span class="asin">B0GTQF2G7C</span> (GUMP28, Magnesium 28-Serv) — $129 at-risk, <b>at risk of removal, deadline Oct 21 2026</b>; (2) children's-toys safety on <span class="asin">B0DL1B6TL5</span> (Poop Sticker Tracker 6-Pack) — $408 at-risk, listing already <b>removed</b>. Both require submission; <b>do not submit without approval.</b> AHR 704 (Healthy).`,
+    trackerDate:"August 4, 2026",
     tracker:[
-     ["Compliance (Account Health)","New GMP Dietary-Supplements / Food &amp; Product Safety certification flag on GUMP28 (B0GTQF2G7C), dated 07/23; listing at risk of removal, $129 at-risk; submission required — needs user decision.","Action Required","High"],
-     ["Missing browse node","GUMP28 (B0GTQF2G7C) shows no Sales Rank (was 0); same ASIN now carries the GMP flag. Bundles exempt. No action needed.","No action needed","Medium"],
-     ["Voice of the Customer","NCX mix: Poor 1 · Good 3 · Excellent 6. Magnesium 56-Serv (B0GYCTWQXB) NCX 3.33% (1/30), performance/quality; one listing slipped Excellent→Good.","Open","Medium"],
-     ["Shipment discrepancies","Closed shipments Located &lt; Expected (all 'Send again'): ORF2 −107, RDU2 −65, TEB9 −23, BNA6 −21, plus smaller. Possible FBA reimbursement.","Open","Low"],
+     ["Compliance (Account Health)","2 open Food &amp; Product Safety cases: (1) GMP certification on GUMP28 (B0GTQF2G7C, Magnesium 28-Serv), $129 at-risk, AT RISK of removal, deadline Oct 21 2026; (2) children's-toys safety on B0DL1B6TL5 (Poop Sticker Tracker 6-Pack), $408 at-risk, listing REMOVED. Both require submission. AHR 704 (Healthy). The toy-safety case is newly surfaced vs 07/28.","Action Required","High"],
+     ["Missing browse node","Verified live this run: GUMP28 (B0GTQF2G7C) is Active with the Featured Offer and 169 units, but Sales Rank shows '--' (missing). Same ASIN carries the GMP flag. Bundles exempt.","Open","Medium"],
+     ["Voice of the Customer","CX Health: Very Poor 0 · Poor 1 · Fair 0 · Good 3 · Excellent 6. Poor: Magnesium 56-Serv (B0GYCTWQXB) NCX 3.7% (1/27 orders), 'Performance or quality not adequate'. No Very Poor.","Open","Medium"],
+     ["Shipment discrepancies","~14 closed shipments Located &lt; Expected (~262 units short), all 'Send again' (none system-flagged). Largest: ORF2 562/676 (−114), RDU2 428/494 (−66), TEB9 549/572 (−23), BNA6 1307/1328 (−21), plus smaller. Possible FBA reimbursement; page 2 (older) not exhaustively reviewed.","Open","Medium"],
+     ["Suppressed listings","2 search-suppressed (unchanged since 07/30): BeginBaby-Stickers (B0DNRNYPLR) &amp; 56-Pack Sticker Set (B0F16Y4LD5) — both sticker-pack bundles. Single-pack ASINs active.","Open","Low"],
      ["Pricing","Pricing Health clean — 0 deactivated, 0 ineligible for Featured Offer, 0 pricing opportunities.","Clear","Low"],
      ["Stranded inventory","0 stranded items — no active FBA inventory stranded.","Clear","Low"],
-     ["Missing Buy Box","0 genuine; all 9 active listings hold the Featured Offer. Only bundles show missing offers (expected).","Clear","Low"],
-     ["Promotions","6 total (was 4): 4 running coupons + 2 new upcoming Q4 Deals — Black Friday/Cyber Monday (Nov 19–30) &amp; Prime Big Deal Days, 3 ASINs each.","Info","Low"]
+     ["Missing Buy Box","0 genuine — the 3 'missing offer' listings are 2 suppressed sticker bundles + 1 OOS (B0FLVKHQRG). No active sellable listing lost the Featured Offer.","Clear","Low"],
+     ["Promotions","4 active/upcoming: running 15% &amp; 10% off Begin Health (Subscribe &amp; Save, Aug 3–Sep 2, $15k budget each); upcoming Q4 — Black Friday/Cyber Monday (Nov 19–30, 3 ASINs) &amp; Prime Big Deal Days (3 ASINs). July coupons ended; new Aug S&amp;S coupons now live.","Info","Low"]
     ],
     kapoq:[
-     "<b>Account Health Rating:</b> 708 (down from 712) — no rating impact from the open items yet.",
-     "<b>Listings:</b> single-packs clear; only the 2 sticker bundles are search-suppressed. Hero listing scores 0.87–0.94.",
-     "<b>Sales:</b> MTD $138,258 vs $146,023 at the same point last month (MoM −5.5%); run rate $157,986.",
-     "<b>Restock:</b> BeginBaby Pre+Pro (BBPP28A) below restock level — 134 units recommended, order date 7/27.",
+     "<b>Account Health Rating:</b> 704 (Healthy) — down from 708; no rating impact from the open compliance items yet.",
+     "<b>Listings:</b> single-packs clear; only the 2 sticker bundles are search-suppressed. Hero listing scores 0.89–0.94; all A+ live.",
+     "<b>Sales:</b> August MTD $17,025 vs $17,092 at the same point last month (MoM −0.4%); run rate $166,630, up from $157,986. Daily avg $5,375 (Aug 1 $5,274 · Aug 2 $5,275 · Aug 3 $5,577).",
+     "<b>Restock:</b> 0 SKUs in the restock report, but Amazon's FBA health flags 3 SKUs Low stock — BeginBaby 28-pk (ship-in 157), Magnesium 28-Serv GUMP28 (414), Growing Up 56-pk GUPT56 (928); recommended ship by 8/11.",
      "<b>Listing Protection:</b> title / image / A+ change flags on BBPP28, GUMP28, GUMT56, GUPT56, GUPP28 — monitor for unwanted edits.",
-     "<b>Dimensions:</b> package-dimension change flags on several SKUs; max fee impact $0 (no size-tier change)."
+     "<b>Dimensions:</b> package-dimension change flags on 9 SKUs; max fee impact $0 (no size-tier change)."
     ]},
   gap:{us:413, usl:"413", them:16900, theml:"Culturelle 13.3K / MaryRuth's 16.9K*", themName:"Category leaders"},
   frontend:{

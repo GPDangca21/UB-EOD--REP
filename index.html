@@ -231,22 +231,20 @@ const brands = [
     ]},
   gap:{us:413, usl:"413", them:16900, theml:"Culturelle 13.3K / MaryRuth's 16.9K*", themName:"Category leaders"},
   frontend:{
-    date:"July 30, 2026",
-    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Begin Health sole seller · A+ content. Every active, purchasable listing passed all four; all 7 flagged SKUs are Closed, Out-of-Stock, or Currently Unavailable.`,
-    stats:[["29","SKUs checked (26 unique ASINs)"],["7","SKUs flagged — all non-active"],
+    date:"August 4, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Begin Health sole seller · A+ content. 29 SKUs across 26 unique ASINs. Every active, purchasable listing passed all four checks; the flagged SKUs below are all Out-of-Stock, Currently Unavailable, or Inactive. Resolved this run: GUMT56 now shows 5 bullets (was 1) and GUMP28 is live &amp; purchasable again with 5 bullets (was inactive/404).`,
+    stats:[["29","SKUs checked (26 unique ASINs)"],["5","SKUs flagged — all non-active"],
       ["0","Defects on active, purchasable listings"],["0","Unauthorized resellers"],
-      ["$138.3K","MTD sales · run rate $158.0K"]],
+      ["$17.0K","Aug MTD · run rate $166.6K"]],
     rows:[
-     ["GUPT112 · B0FLVKHQRG","Out of stock",`<span class="fail">No Buy Box</span> — content healthy (6 bullets, A+)`],
-     ["GUMP84 · B0D8K4M7W1","Closed",`<span class="fail">0 bullets · no Buy Box</span>`],
-     ["GUPP28-2PK · B0D8LLBJCN","Closed",`<span class="fail">No Buy Box</span>`],
-     ["BeginBaby-Stickers · B0DNRNYPLR","Currently unavailable",`<span class="fail">No Buy Box</span> — content intact`],
-     ["56PCK-STICKER SET · B0F16Y4LD5","Currently unavailable",`<span class="fail">No Buy Box</span>`],
-     ["GUPP28tracker · B0DNRNCT15","Currently unavailable",`<span class="fail">No Buy Box</span> — promo/tracker bundle`],
-     ["6A-5J3Y-0FZB · B0DL1B6TL5","Inactive / 404",`<span class="fail">Fails all four</span> — live page is a 404`]
+     ["GUPT112 · B0FLVKHQRG","Out of stock",`<span class="fail">No Buy Box</span> — content healthy (6 bullets, A+); restock to restore the Buy Box.`],
+     ["BeginBaby-Stickers · B0DNRNYPLR","Currently unavailable",`<span class="fail">No Buy Box</span> — content intact (sticker bundle).`],
+     ["56PCK-STICKER SET · B0F16Y4LD5","Currently unavailable",`<span class="fail">No Buy Box</span> — sticker bundle.`],
+     ["GUPP28tracker · B0DNRNCT15","Currently unavailable",`<span class="fail">No Buy Box</span> — promo/tracker bundle.`],
+     ["6A-5J3Y-0FZB · B0DL1B6TL5","Inactive / 404",`<span class="fail">Fails all four</span> — live page is a 404 (toy-safety case, see Account health).`]
     ],
-    urgent:`<b>Most urgent — the GMP compliance flag on GUMP28 (B0GTQF2G7C).</b> A new Dietary-Supplements GMP / Food &amp; Product Safety certification flag (dated 07/23) puts the listing at risk of removal ($129 at-risk) and it has lost its Sales Rank. It needs a submit/appeal decision — <b>do not submit without approval.</b> Next commercial priority: restock GUPT112 (B0FLVKHQRG), Out-of-Stock but otherwise fully healthy — replenishing restores its Buy Box immediately.`,
-    trend:`Trend vs. prior run: GUMT56 stays healthy (5 bullets) and GUMP28 remains live &amp; purchasable — but GUMP28 (B0GTQF2G7C) now carries a <b>new GMP compliance flag (07/23)</b> and has lost its Sales Rank, making the Food &amp; Product Safety case the top open item.`
+    urgent:`<b>Most urgent — restock GUPT112 (B0FLVKHQRG), the 112-serving Prebiotic Fiber value size.</b> It is Out-of-Stock but otherwise completely healthy (6 bullets, A+ present, no reseller issue) — the largest value size in the fiber line, so every day without a Buy Box is lost revenue on a listing shoppers are actively reaching. Replenishing restores the Buy Box immediately; no content work needed. The remaining Buy Box failures are on intentionally-unavailable sticker/tracker bundles (far lower priority). Separately, the GMP &amp; toy-safety compliance cases remain open in Account health.`,
+    trend:`Trend vs. prior run: <b>improved</b> — GUMT56 now shows 5 bullets (was 1) and GUMP28 is live &amp; purchasable again with 5 bullets (was inactive/404). No unauthorized sellers; A+ renders on every live listing. The only frontend defects left are on non-active SKUs. GUMP28 still carries the GMP flag and a missing Sales Rank (tracked in Account health).`
   },
   findings:[
    ["Reviews","Hero SKUs carry 413/152 reviews vs. 6,700–16,900 for the volume leaders.","Vine + automated review requests across heroes; target 1,000+ per hero.","High","Done","Manual review request ineligible — the automated review request was already activated for this ASIN."],

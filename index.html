@@ -215,7 +215,7 @@ const brands = [
      ["Missing browse node","Verified live this run: GUMP28 (B0GTQF2G7C) is Active with the Featured Offer and 169 units, but Sales Rank shows '--' (missing). Same ASIN carries the GMP flag. Bundles exempt.","Open","Medium"],
      ["Voice of the Customer","CX Health: Very Poor 0 · Poor 1 · Fair 0 · Good 3 · Excellent 6. Poor: Magnesium 56-Serv (B0GYCTWQXB) NCX 3.7% (1/27 orders), 'Performance or quality not adequate'. No Very Poor.","Open","Medium"],
      ["Shipment discrepancies","~14 closed shipments Located &lt; Expected (~262 units short), all 'Send again' (none system-flagged). Largest: ORF2 562/676 (−114), RDU2 428/494 (−66), TEB9 549/572 (−23), BNA6 1307/1328 (−21), plus smaller. Possible FBA reimbursement; page 2 (older) not exhaustively reviewed.","Open","Medium"],
-     ["Suppressed listings","2 search-suppressed (unchanged since 07/30): BeginBaby-Stickers (B0DNRNYPLR) &amp; 56-Pack Sticker Set (B0F16Y4LD5) — both sticker-pack bundles. Single-pack ASINs active.","Open","Low"],
+     ["Suppressed listings","No suppressed listings.","Clear","Low"],
      ["Pricing","Pricing Health clean — 0 deactivated, 0 ineligible for Featured Offer, 0 pricing opportunities.","Clear","Low"],
      ["Stranded inventory","0 stranded items — no active FBA inventory stranded.","Clear","Low"],
      ["Missing Buy Box","0 genuine — the 3 'missing offer' listings are 2 suppressed sticker bundles + 1 OOS (B0FLVKHQRG). No active sellable listing lost the Featured Offer.","Clear","Low"],
@@ -232,19 +232,15 @@ const brands = [
   gap:{us:413, usl:"413", them:16900, theml:"Culturelle 13.3K / MaryRuth's 16.9K*", themName:"Category leaders"},
   frontend:{
     date:"August 4, 2026",
-    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Begin Health sole seller · A+ content. 29 SKUs across 26 unique ASINs. Every active, purchasable listing passed all four checks; the flagged SKUs below are all Out-of-Stock, Currently Unavailable, or Inactive. Resolved this run: GUMT56 now shows 5 bullets (was 1) and GUMP28 is live &amp; purchasable again with 5 bullets (was inactive/404).`,
-    stats:[["29","SKUs checked (26 unique ASINs)"],["5","SKUs flagged — all non-active"],
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Begin Health sole seller · A+ content. 29 SKUs across 26 unique ASINs. Every active, purchasable listing passed all four checks. Resolved this run: GUMT56 now shows 5 bullets (was 1) and GUMP28 is live &amp; purchasable again with 5 bullets (was inactive/404). The one open commercial item is the GUPT112 restock below.`,
+    stats:[["29","SKUs checked (26 unique ASINs)"],["1","SKU flagged (restock)"],
       ["0","Defects on active, purchasable listings"],["0","Unauthorized resellers"],
       ["$17.0K","Aug MTD · run rate $166.6K"]],
     rows:[
-     ["GUPT112 · B0FLVKHQRG","Out of stock",`<span class="fail">No Buy Box</span> — content healthy (6 bullets, A+); restock to restore the Buy Box.`],
-     ["BeginBaby-Stickers · B0DNRNYPLR","Currently unavailable",`<span class="fail">No Buy Box</span> — content intact (sticker bundle).`],
-     ["56PCK-STICKER SET · B0F16Y4LD5","Currently unavailable",`<span class="fail">No Buy Box</span> — sticker bundle.`],
-     ["GUPP28tracker · B0DNRNCT15","Currently unavailable",`<span class="fail">No Buy Box</span> — promo/tracker bundle.`],
-     ["6A-5J3Y-0FZB · B0DL1B6TL5","Inactive / 404",`<span class="fail">Fails all four</span> — live page is a 404 (toy-safety case, see Account health).`]
+     ["GUPT112 · B0FLVKHQRG","Out of stock",`<span class="fail">No Buy Box</span> — content healthy (6 bullets, A+); restock to restore the Buy Box.`]
     ],
-    urgent:`<b>Most urgent — restock GUPT112 (B0FLVKHQRG), the 112-serving Prebiotic Fiber value size.</b> It is Out-of-Stock but otherwise completely healthy (6 bullets, A+ present, no reseller issue) — the largest value size in the fiber line, so every day without a Buy Box is lost revenue on a listing shoppers are actively reaching. Replenishing restores the Buy Box immediately; no content work needed. The remaining Buy Box failures are on intentionally-unavailable sticker/tracker bundles (far lower priority). Separately, the GMP &amp; toy-safety compliance cases remain open in Account health.`,
-    trend:`Trend vs. prior run: <b>improved</b> — GUMT56 now shows 5 bullets (was 1) and GUMP28 is live &amp; purchasable again with 5 bullets (was inactive/404). No unauthorized sellers; A+ renders on every live listing. The only frontend defects left are on non-active SKUs. GUMP28 still carries the GMP flag and a missing Sales Rank (tracked in Account health).`
+    urgent:`<b>Most urgent — restock GUPT112 (B0FLVKHQRG), the 112-serving Prebiotic Fiber value size.</b> It is Out-of-Stock but otherwise completely healthy (6 bullets, A+ present, no reseller issue) — the largest value size in the fiber line, so every day without a Buy Box is lost revenue on a listing shoppers are actively reaching. Replenishing restores the Buy Box immediately; no content work needed. Separately, the GMP &amp; toy-safety compliance cases remain open in Account health.`,
+    trend:`Trend vs. prior run: <b>improved</b> — GUMT56 now shows 5 bullets (was 1) and GUMP28 is live &amp; purchasable again with 5 bullets (was inactive/404). No unauthorized sellers; A+ renders on every live listing. GUPT112 remains the one commercial item (restock). GUMP28 still carries the GMP flag and a missing Sales Rank (tracked in Account health).`
   },
   findings:[
    ["Reviews","Hero SKUs carry 413/152 reviews vs. 6,700–16,900 for the volume leaders.","Vine + automated review requests across heroes; target 1,000+ per hero.","High","Done","Manual review request ineligible — the automated review request was already activated for this ASIN."],

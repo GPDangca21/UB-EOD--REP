@@ -42,6 +42,17 @@
   .panel.active{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
+  /* SUB-TABS (within each brand) */
+  .subnav{display:flex;flex-wrap:wrap;gap:4px;margin:10px 0 4px;border-bottom:2px solid var(--line)}
+  .subtab{appearance:none;border:none;background:transparent;font-family:inherit;font-size:13px;font-weight:700;
+    color:var(--grey);padding:9px 16px;cursor:pointer;border-radius:9px 9px 0 0;
+    border-bottom:3px solid transparent;margin-bottom:-2px;transition:.15s;white-space:nowrap}
+  .subtab:hover{color:var(--navy);background:var(--band)}
+  .subtab.active{color:var(--teal);border-bottom-color:var(--teal);background:#fff}
+  .subpanel{display:none;animation:fade .2s ease}
+  .subpanel.active{display:block}
+  @media(max-width:820px){.subtab{font-size:12px;padding:8px 11px}}
+
   /* KPI strip */
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
   .kpi{background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 2px 10px rgba(0,0,0,.06);
@@ -533,52 +544,66 @@ function frontendBlock(b){
 }
 document.getElementById('brandpanels').innerHTML = brands.map(b=>`
  <div class="panel" id="tab-${b.id}">
-   <div class="sect">
-     <h2>Portfolio at a glance</h2>
-     <p class="sub">Hero product, key metrics, biggest issue, and biggest opportunity.</p>
-     <div class="card">
-       <div class="top"><div><h3>${b.name}</h3><div class="cat">${b.cat}</div></div>
-         <span class="pill ${b.pri==='Critical'?'crit':'high'}">${b.pri}</span></div>
-       <div class="body">
-         <div class="metrics">
-           <div class="metric">Hero<b>${b.hero}</b></div>
-           <div class="metric">Price<b>${b.price}</b></div>
-           <div class="metric">Rating<b>${b.rating}★</b></div>
-           <div class="metric">Reviews<b>${b.reviews}</b></div>
+   <div class="subnav" role="tablist">
+     <button class="subtab active" data-sub="pf">Portfolio at a glance</button>
+     <button class="subtab" data-sub="ah">Account health checks${b.account.status==='issue'?' <span class="dot issue" style="margin-left:6px"></span>':''}</button>
+     <button class="subtab" data-sub="fe">Frontend checks</button>
+     <button class="subtab" data-sub="fr">Findings &amp; recommendations</button>
+   </div>
+
+   <div class="subpanel active" data-sub="pf">
+     <div class="sect" style="margin-top:16px">
+       <h2>Portfolio at a glance</h2>
+       <p class="sub">Hero product, key metrics, biggest issue, and biggest opportunity.</p>
+       <div class="card">
+         <div class="top"><div><h3>${b.name}</h3><div class="cat">${b.cat}</div></div>
+           <span class="pill ${b.pri==='Critical'?'crit':'high'}">${b.pri}</span></div>
+         <div class="body">
+           <div class="metrics">
+             <div class="metric">Hero<b>${b.hero}</b></div>
+             <div class="metric">Price<b>${b.price}</b></div>
+             <div class="metric">Rating<b>${b.rating}★</b></div>
+             <div class="metric">Reviews<b>${b.reviews}</b></div>
+           </div>
+           <div class="row issue"><span class="tag">Biggest issue · </span>${b.issue}</div>
+           <div class="row opp"><span class="tag">Biggest opportunity · </span>${b.opp}</div>
          </div>
-         <div class="row issue"><span class="tag">Biggest issue · </span>${b.issue}</div>
-         <div class="row opp"><span class="tag">Biggest opportunity · </span>${b.opp}</div>
        </div>
      </div>
-   </div>
-
-   <div class="sect">
-     <h2>Account health checks</h2>
-     <p class="sub">Read-only account status. Green = no urgent issues; red = active issue under troubleshooting.</p>
-     <div class="ahcard ${b.account.status==='issue'?'issue':''}">
-       <div class="ahtop"><h3>${b.name}</h3><span class="st">${b.account.label}</span></div>
-       <div class="ahnote">${b.account.note}</div>
+     <div class="sect">
+       <h2>The through-line: the review gap</h2>
+       <p class="sub">Our hero (coral) vs. the category leader (navy). Closing this is the most consistent priority.</p>
+       ${gapBlock(b)}
      </div>
-     ${b.account.tracker?accountTrackerTable(b.account.tracker,b.account.trackerDate,b.name):''}
-     ${b.account.kapoq?kapoqPanel(b.account.kapoq):''}
    </div>
 
-   <div class="sect">
-     <h2>Frontend checks</h2>
-     <p class="sub">Live detail-page audit: bullets, Buy Box, authorized seller, and A+ content.</p>
-     ${frontendBlock(b)}
+   <div class="subpanel" data-sub="ah">
+     <div class="sect" style="margin-top:16px">
+       <h2>Account health checks</h2>
+       <p class="sub">Read-only account status. Green = no urgent issues; red = active issue under troubleshooting.</p>
+       <div class="ahcard ${b.account.status==='issue'?'issue':''}">
+         <div class="ahtop"><h3>${b.name}</h3><span class="st">${b.account.label}</span></div>
+         <div class="ahnote">${b.account.note}</div>
+       </div>
+       ${b.account.tracker?accountTrackerTable(b.account.tracker,b.account.trackerDate,b.name):''}
+       ${b.account.kapoq?kapoqPanel(b.account.kapoq):''}
+     </div>
    </div>
 
-   <div class="sect">
-     <h2>The through-line: the review gap</h2>
-     <p class="sub">Our hero (coral) vs. the category leader (navy). Closing this is the most consistent priority.</p>
-     ${gapBlock(b)}
+   <div class="subpanel" data-sub="fe">
+     <div class="sect" style="margin-top:16px">
+       <h2>Frontend checks</h2>
+       <p class="sub">Live detail-page audit: bullets, Buy Box, authorized seller, and A+ content.</p>
+       ${frontendBlock(b)}
+     </div>
    </div>
 
-   <div class="sect">
-     <h2>Findings &amp; recommendations</h2>
-     <p class="sub">Full detail, owners, and manager sign-off columns are in the Excel workbook.</p>
-     ${findingsTable(b.findings)}
+   <div class="subpanel" data-sub="fr">
+     <div class="sect" style="margin-top:16px">
+       <h2>Findings &amp; recommendations</h2>
+       <p class="sub">Full detail, owners, and manager sign-off columns are in the Excel workbook.</p>
+       ${findingsTable(b.findings)}
+     </div>
    </div>
  </div>`).join('');
 
@@ -633,7 +658,24 @@ tabbar.addEventListener('click',e=>{
   const id=btn.dataset.tab;
   [...tabbar.children].forEach(c=>c.classList.toggle('active',c===btn));
   document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id==='tab-'+id));
+  // reset the newly shown brand to its first sub-tab
+  const active=document.getElementById('tab-'+id);
+  if(active){
+    active.querySelectorAll('.subtab').forEach((x,i)=>x.classList.toggle('active',i===0));
+    active.querySelectorAll('.subpanel').forEach((p,i)=>p.classList.toggle('active',i===0));
+  }
   window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ---------- sub-tab switching (within a brand) ---------- */
+document.getElementById('brandpanels').addEventListener('click',e=>{
+  const st=e.target.closest('.subtab'); if(!st) return;
+  const panel=st.closest('.panel'); const sub=st.dataset.sub;
+  panel.querySelectorAll('.subtab').forEach(x=>x.classList.toggle('active',x===st));
+  panel.querySelectorAll('.subpanel').forEach(p=>p.classList.toggle('active',p.dataset.sub===sub));
+  const nav=panel.querySelector('.subnav');
+  const y=nav.getBoundingClientRect().top+window.scrollY-84;
+  window.scrollTo({top:y,behavior:'smooth'});
 });
 </script>
 </body>

@@ -419,40 +419,39 @@ const brands = [
   issue:"Value hidden (~2× sticker); Subscribe & Save shows no discount; packaging damage.",
   opp:"Make value visible; own the no-brew liquid coffee-alternative niche.",
   account:{status:"ok", label:"Healthy — AHR 200",
-    note:`Account Health Rating <b>200 (Healthy)</b>, 0 policy violations, 0% Order Defect Rate (0/61). One CX action item: Cocoa (<span class="asin">B0GGHN9Y6Y</span>) has slipped to <b>Very Poor</b> — NCX 6.67% (1 of 15), reason "product condition not as expected." Vanilla has recovered to Excellent. Review packaging on the 250 ml bottles.`,
-    trackerDate:"August 6, 2026",
+    note:`Account Health Rating <b>200 (Healthy)</b>, 0 policy violations, 0% Order Defect Rate (0/62), no at-risk banners. One CX action item: Cocoa (<span class="asin">B0GGHN9Y6Y</span>) — the top-selling flavor — carries the account's only <b>Very Poor</b> VOC (NCX 6.67%, 1 of 15, "product condition not as expected") and is low on stock. Vanilla / Elderberry / Lemon are Excellent. Review packaging on the 250 ml bottles.`,
+    trackerDate:"August 7, 2026",
     tracker:[
      ["Voice of the Customer","Cocoa (B0GGHN9Y6Y) slipped to Very Poor — NCX 6.67% (1 of 15 orders), top reason 'product condition not as expected'. Vanilla recovered to Excellent. CX split: 3 Excellent / 1 Very Poor. Monitor packaging / protection on the 250 ml bottles.","Action Required","Medium"],
      ["Suppressed listings","0 search-suppressed / 0 at-risk. All 5 SKUs in active/normal status.","Clear","Low"],
      ["Pricing","0 offers deactivated for pricing errors, 0 ineligible for Featured Offer, 0 close to Featured Offer price.","Clear","Low"],
      ["Stranded inventory","0 stranded — no active FBA inventory in fulfillment centers.","Clear","Low"],
      ["Missing Buy Box","No defect — active FBA SKUs hold the Featured Offer. OOS FBM SKUs show no offer (expected).","Clear","Low"],
-     ["Missing browse node","All 5 listings indexed with a Sales Rank in Grocery &amp; Gourmet Food (Cocoa ~94.5k / Vanilla ~94.6k). 0 missing browse nodes.","Clear","Low"],
-     ["Compliance (Account Health)","AHR 200 (Healthy), 0 policy violations across all categories, 0% Order Defect Rate (0/61).","Clear","Low"],
+     ["Missing browse node","All 5 flavors indexed with a Sales Rank in Grocery &amp; Gourmet Food (#121,305; #175 in Coffee Substitutes). 0 missing browse nodes.","Clear","Low"],
+     ["Compliance (Account Health)","AHR 200 (Healthy), 0 policy violations across all categories, 0% Order Defect Rate (0/62). No at-risk banners.","Clear","Low"],
      ["Shipment discrepancies","No discrepancies — Inbound Performance returned no results; no FBA inbound shipments.","Clear","Low"],
      ["Promotions","1 active: 'VDG Tiered Discounts' (% off) running 07/08–12/31, budget $25,000, 0.62% utilized, 5 orders.","Info","Low"]
     ],
     kapoq:[
-     "<b>Account Health Rating:</b> 200 (Healthy) · 0 policy violations · 0% Order Defect Rate (0/61).",
-     "<b>Sales:</b> August MTD $150 vs $75 at the same point last month; run rate $1,162 (last month total $1,338). A $24.99 sale price is running across flavors.",
-     "<b>Restock:</b> 0 SKUs below the restock trigger; the Below-Stock report is clear. Pure Chicory &amp; Lemon are flagged Excess.",
-     "<b>Listing scores:</b> 0.87–0.89 across flavors; Cocoa lags at 0.68 (missing A+). 30-day sales: Pure Chicory $444, Cocoa $404, Vanilla $373, Elderberry $192, Lemon $0.",
+     "<b>Account Health Rating:</b> 200 (Healthy) · 0 policy violations · 0% Order Defect Rate (0/62).",
+     "<b>Sales:</b> August MTD $150 vs $75 at the same point last month; run rate $930 (down from $1,162; last month total $1,338). No sales the last two days. A $24.99 sale price is running across flavors.",
+     "<b>Restock:</b> 0 SKUs below the restock trigger. Cocoa is low at 15 units (flagged in the frontend); Pure Chicory &amp; Lemon are flagged Excess.",
+     "<b>Listing scores:</b> 0.87–0.89 across flavors; Cocoa lags at 0.68 — its A+ is still flagged incomplete in the backend audit even though it now renders on the live page. 30-day sales: Pure Chicory $444, Cocoa $404, Vanilla $373, Elderberry $192, Lemon $0.",
      "<b>Promotions:</b> 'VDG Tiered Discounts' live through 12/31 — 5 orders, 0.62% of the $25k budget used.",
-     "<b>Listing Protection / Dimensions:</b> Title + Images flagged as unprotected across the 5 ASINs (A+ flagged on 4); 0 dimension changes (max fee impact $0)."
+     "<b>Listing Protection / Dimensions:</b> Title + Images flagged as unprotected across the 5 ASINs; 0 dimension changes (max fee impact $0)."
     ]},
   gap:{us:4, usl:"4", them:28600, theml:"Cafe Du Monde 28.6K", themName:"Cafe Du Monde"},
   frontend:{
-    date:"August 6, 2026",
-    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Vallee de Galene sole seller · A+ content. 10 SKUs across 5 unique ASINs (Chicory Coffee flavors, each pairing an FBA + FBM offer on one page). All bullets pass, every listing wins the Buy Box, and there are no unauthorized sellers. The one open defect is missing A+ on the Cocoa flavor.`,
-    stats:[["10","SKUs checked (5 unique ASINs)"],["2","SKUs flagged (1 ASIN)"],
-      ["1","Missing A+ (Cocoa)"],["0","Unauthorized resellers"],
-      ["$150","Aug MTD · run rate $1.2K"]],
+    date:"August 7, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Vallee de Galene sole seller · A+ content. 5 unique live ASINs (11 SKU-listings). <b>All 5 flavors now pass all four checks</b> — every live page is in stock, wins its Buy Box, shows no third-party sellers, and renders A+ (a five-flavor comparison chart). The long-standing "Cocoa missing A+" frontend flag has cleared on the live page. The one remaining watch is a customer-experience signal on Cocoa (below).`,
+    stats:[["5","ASINs checked (11 SKUs)"],["0","ASINs flagged — all pass"],
+      ["0","Unauthorized resellers"],["0","Missing A+ (live pages)"],
+      ["$150","Aug MTD · run rate $0.9K"]],
     rows:[
-     ["Cocoa · B0GGHN9Y6Y","Live · 15 units left",`<span class="fail">Missing A+ Content</span> — only a plain-text description; the comparison-chart module on the other 4 flavors is absent. Wins Buy Box.`],
-     ["Vanilla · B0GGJ4L5HR","Live — Buy Box won","Passes all four frontend checks. CX has recovered to Excellent; the flag has shifted to Cocoa (Very Poor) — see Account health."]
+     ["Cocoa · B0GGHN9Y6Y","In stock — 15 left · top seller",`Passes all four frontend checks (5 bullets, Buy Box, sole seller, A+). <span class="fail">Watch</span> — carries the account's only Very Poor VOC (1 NCX of 15, "product condition") and is low on stock; review packaging &amp; confirm a replenishment.`]
     ],
-    urgent:`<b>Most urgent — publish / repair the A+ Content on Cocoa (B0GGHN9Y6Y).</b> Cocoa is active, in stock and winning the Buy Box, so every shopper sees a bare product page while the other four flavors show the full comparison module — a live conversion cost that has carried across consecutive audits. Apply the same A+ comparison-chart module used on the other flavors. Also watch Cocoa's stock (15 units left).`,
-    trend:`No change since the previous audit — the Cocoa A+ defect is unchanged (the only frontend defect across all 10 SKUs). Movement this run is inventory: Cocoa is down to 15 units. A $24.99 sale price is now running across flavors; BSR ~72k Grocery.`
+    urgent:`<b>Most urgent — review the Cocoa flavor (B0GGHN9Y6Y).</b> It is the top-selling variant (15 orders — the most in the family) yet it carries the account's only Very Poor Voice-of-the-Customer rating (1 NCX, top reason "product condition not as expected," 6.67% NCX), and it is low on stock (15 left). Review packaging / product condition on the 250 ml bottles and confirm a replenishment is inbound. No live listing has a content defect, suppression, or unauthorized seller — every flavor passes all four frontend checks.`,
+    trend:`<b>Improved</b> — the long-standing Cocoa "missing A+" frontend defect has cleared: all 5 flavors now pass all four live checks (bullets, Buy Box, sole seller, A+). The only remaining watch is the Cocoa customer-experience signal (Very Poor VOC) plus its low stock (15 units). No unauthorized sellers; Account Health fully Healthy (AHR 200, ODR 0%).`
   },
   findings:[
    ["Value perception","$29.99 reads ~2× rivals; ~$0.60/cup value not shown.","Add a value infographic (~50 servings, ~$0.60/cup, no-brew).","High","Open",""],

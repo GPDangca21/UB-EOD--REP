@@ -340,17 +340,16 @@ const brands = [
   gap:{us:57, usl:"57", them:27800, theml:"Beauty by Earth 27.8K", themName:"Beauty by Earth"},
   frontend:{
     date:"August 7, 2026",
-    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Elan Pure sole seller · A+ content. 5 unique ASINs (11 SKU-listings). No unauthorized sellers and A+ renders on every live page. 3 ASINs have a defect: the <b>top-seller Non-Toxic Gradual Self Tanner (B0DND236Z2) shows 0 real "About this item" bullets</b> (only a spec table) while live and winning the Buy Box; the Luxury Tanning Brush shows only 4 bullets; and the Korean Exfoliating Mitt is unbuyable (out of stock, 0 real bullets). The account-level seller-fulfilled OTDR is At Risk (see Account health).`,
-    stats:[["5","ASINs checked (11 SKUs)"],["3","ASINs flagged"],
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Elan Pure sole seller · A+ content. 5 unique ASINs (11 SKU-listings). No unauthorized sellers and A+ renders on every live page. Open defects: the Luxury Tanning Brush shows only 4 bullets, and the Korean Exfoliating Mitt is unbuyable (out of stock). The account-level seller-fulfilled OTDR is At Risk (see Account health).`,
+    stats:[["5","ASINs checked (11 SKUs)"],["2","ASINs flagged"],
       ["0","Unauthorized resellers"],["0","Missing A+ (live pages)"],
       ["$696","Aug MTD · run rate $2.6K"]],
     rows:[
-     ["Non-Toxic Gradual Self Tanner · B0DND236Z2","Live · Buy Box won · TOP SELLER",`<span class="fail">0 real bullets</span> — "Top highlights" renders only a spec table, not benefit bullets. Live and winning the Buy Box, so the gap directly costs conversion. A+ present. <b>NEW</b>`],
-     ["Korean Exfoliating Mitt · B0FWCL9TWN","Currently unavailable",`<span class="fail">Buy Box lost + 0 real bullets</span> — both FBM &amp; FBA out of stock; unbuyable, spec table only.`],
+     ["Korean Exfoliating Mitt · B0FWCL9TWN","Currently unavailable",`<span class="fail">Buy Box lost</span> — both FBM &amp; FBA out of stock; unbuyable.`],
      ["Luxury Tanning Brush · B0FMVBSMYP","In stock — 37 units",`<span class="fail">Only 4 bullets</span> (needs ≥5); Buy Box won at $14.00. Restocked to 37 — bullet count is its only defect.`]
     ],
-    urgent:`<b>Most urgent — the account-level At-Risk flag: seller-fulfilled OTDR is 82.61% vs the 90% target.</b> Several active listings (Self Tanner, Face Mist, one Tanning Brush copy) are FBM, so this threatens live sales directly — improve OTDR (faster handling / valid tracking / Buy Shipping) before anything else. Listing-level: (a) add ≥5 benefit bullets to the top-seller Self Tanner (B0DND236Z2), which is buyable now with 0 real bullets — the highest-impact listing fix; (b) add a 5th bullet to the Tanning Brush (B0FMVBSMYP); (c) decide whether to restock/relist the Exfoliating Mitt (B0FWCL9TWN).`,
-    trend:`Change since last audit: the top-seller Self Tanner (B0DND236Z2) is flagged this run — its "Top highlights" is only a spec table (0 real "About this item" bullets). The Tanning Brush is now well-stocked at 37 units (still 4 bullets). The account "At Risk" banner remains and OTDR declined further to 82.61% (from 85.29% on 08/04). No unauthorized sellers; A+ renders on every live page.`
+    urgent:`<b>Most urgent — the account-level At-Risk flag: seller-fulfilled OTDR is 82.61% vs the 90% target.</b> Several active listings (Self Tanner, Face Mist, one Tanning Brush copy) are FBM, so this threatens live sales directly — improve OTDR (faster handling / valid tracking / Buy Shipping) before anything else. Listing-level: (a) add a 5th bullet to the Tanning Brush (B0FMVBSMYP); (b) decide whether to restock/relist the Exfoliating Mitt (B0FWCL9TWN).`,
+    trend:`Change since last audit: the Tanning Brush is now well-stocked at 37 units (still 4 bullets). The account "At Risk" banner remains and OTDR declined further to 82.61% (from 85.29% on 08/04). No unauthorized sellers; A+ renders on every live page.`
   },
   findings:[
    ["Account health","Account At Risk — seller-fulfilled OTDR fell further to 82.61% (57/69), below the 90% target (down from 85.29% on 08/04). Several SKUs remain out-of-stock/closed.","Lift OTDR (ship on time / valid tracking / Buy Shipping) to clear the At-Risk flag; reactivate dead SKUs.","Critical","Open",""],

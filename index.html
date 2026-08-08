@@ -163,7 +163,7 @@
 <header>
   <div class="kick">Amazon Marketplace Intelligence</div>
   <h1>Portfolio Dashboard — 5 Brands</h1>
-  <p>End-of-day management review · August 7, 2026 · Read-only analysis of live Amazon Seller Central + public storefront data</p>
+  <p>End-of-day management review · August 8, 2026 · Read-only analysis of live Amazon Seller Central + public storefront data</p>
 </header>
 
 <div class="wrap">
@@ -206,7 +206,7 @@
   <div id="brandpanels"></div>
 
   <footer>
-    Prepared read-only from live Amazon data on August 7, 2026; figures fluctuate over time.<br>
+    Prepared read-only from live Amazon data on August 8, 2026; figures fluctuate over time.<br>
     Companion deliverables: per-brand Word reports · consolidated Excel workbook (with approval columns) · this dashboard.
   </footer>
 </div>
@@ -265,41 +265,41 @@ const brands = [
   issue:"No stated caffeine (category's #1 spec); price 2–4× rivals; low rating.",
   opp:"Own the fun-flavor energy niche; fix caffeine transparency, value, and reviews.",
   account:{status:"ok", label:"Healthy — AHR 204",
-    note:`Account Health healthy — <b>AHR 204</b>, Order Defect Rate 0%, 0 compliance issues (emergency contact still shows unverified). One CX action item: Mental Mint 2-Pack (<span class="asin">B0H3K374NM</span>) stays Very Poor (NCX 12.5%, 1 of 8). Mental Mint 3-Pack has restocked and holds its Buy Box but is <b>down to 1 unit</b> — replenish before it stocks out.`,
-    trackerDate:"August 6, 2026",
+    note:`Account Health healthy — <b>AHR 204</b>, Order Defect Rate 0% (0/89, 60d), 0 issues across all 10 compliance categories. One CX action item: Mental Mint 2-Pack (<span class="asin">B0H3K374NM</span>) stays Very Poor (NCX 12.5%, 1 of 8). Mental Mint 3-Pack holds its Buy Box but is <b>down to 1 unit</b> — replenish before it stocks out (99 units inbound). Two items to verify: the home page shows a store-status label reading "Deactivated" even though every live listing is actively selling with the Buy Box, and the emergency contact still shows unverified.`,
+    trackerDate:"August 8, 2026",
     tracker:[
-     ["Voice of the Customer","Mental Mint 2-Pack (B0H3K374NM) stays Very Poor — NCX 12.5% (1 of 8), 2.5★, 100% 'performance/quality'. CX otherwise strong: 7 of 8 listings Excellent.","Action needed","High"],
-     ["Missing Buy Box / restock","0 offers ineligible; in-stock offers hold the Featured Offer. 4 FBM 3-Pack child SKUs sit at qty 0 (Zapple, Crazy Colada, Mental Mint, Variety). Mental Mint FBA (MM3P-0782-FBA) restocked and is back in stock — but down to 1 unit. A+ Content live on all three 2-Packs.","Monitor","Medium"],
-     ["Shipment discrepancies","2 closed shipments received 1 unit short (unchanged): ABQ2 (98/99) &amp; HLI2 (124/125). Prior PSC2 now closed 100% (150/150). New FBA STA 07/29–PSC2 (165 units) in transit (0/165). Consider reimbursement on the two shortfalls.","Monitor","Medium"],
-     ["Suppressed listings","0 search-suppressed / 0 at-risk. 4 FBM 3-Pack SKUs inactive at qty 0 (Zapple, Crazy Colada, Mental Mint, Variety) — down from 5 last week (Mental Mint FBA restocked).","Clear","Low"],
+     ["Voice of the Customer","Mental Mint 2-Pack (B0H3K374NM) stays Very Poor — NCX 12.5% (1 of 8), 2.5★, 100% 'performance/quality not adequate'. CX otherwise strong: 7 of 8 listings Excellent, 0 Good/Fair/Poor.","Action needed","High"],
+     ["Missing Buy Box / restock","All 7 live ASINs hold the Featured Offer, sold by Blow It Gum (FBA). Mental Mint 3-Pack (MM3P-0782-FBA) restocked but is down to 1 unit — imminent stock-out. Deleted listing B0F8RZR16S (Crazy Colada 3-Pack) returns a 404; a live equivalent (B0FN22NT9X) exists.","Monitor","Medium"],
+     ["Shipment discrepancies","Could not verify this run — the Shipments page (new and legacy) failed to load / timed out; Shipping Performance shows N/A. Prior 08/04 run noted 2 closed shipments received 1 unit short. Re-check next run.","Monitor","Medium"],
+     ["Suppressed listings","0 search-suppressed / 0 at-risk. 12 listings in the variation family: 7 active, 4 inactive, 4 out of stock — a stock status, not content suppression.","Clear","Low"],
      ["Pricing","No pricing issues — 0 pricing opportunities flagged, 0 offers deactivated for pricing errors.","Clear","Low"],
      ["Stranded inventory","0 products stranded in fulfillment centers.","Clear","Low"],
-     ["Missing browse node","All active ASINs show a valid Sales Rank (Grocery &amp; Gourmet Food, ~90.2k–91.6k). Variety pack exempt as bundle.","Clear","Low"],
-     ["Compliance (Account Health)","AHR 204, Order Defect Rate 0%, 0 issues across all 10 compliance categories. Note: emergency contact info still shows as not verified.","Clear","Low"],
+     ["Missing browse node","All active ASINs show a valid Sales Rank (Grocery &amp; Gourmet Food, ~84.8k). Variety pack exempt as bundle.","Clear","Low"],
+     ["Compliance (Account Health)","AHR 204, Order Defect Rate 0% (0/89, 60d), 0 issues across all 10 compliance categories. Verify: home-page store status reads 'Deactivated' though live listings sell normally; emergency contact still shows unverified.","Monitor","Low"],
      ["Promotions","No active/running promotions (Running + Upcoming filter returned 0). For client approval if they want to reactivate a promotion.","For approval","Low"]
     ],
     kapoq:[
-     "<b>Account Health Rating:</b> 204 · Order Defect Rate 0% · 0 policy/compliance issues.",
-     "<b>Sales:</b> August MTD $120 (3 days in) vs $60 at the same point last month; run rate $1,240, tracking ~+11% above last month's $1,112 total.",
-     "<b>Restock:</b> Mental Mint 3-Pack (B0FN1XXM4N) critically low at 1 unit — replenish now. Zapple 3-Pack down to 9, Variety Pack 17; Below-Stock report otherwise clear.",
-     "<b>Listing hijacker check:</b> Blow It Gum is the sole seller — 0 unauthorized resellers on any ASIN, so no outside party holds the Buy Box or can edit the detail page. Amazon flagged image / A+ changes on the three 2-Packs; confirm those edits were made by the brand, not an outside party changing the PDP.",
-     "<b>Listing Protection:</b> image / A+ change flags on the three 2-Packs — monitor for unwanted edits.",
-     "<b>Dimensions:</b> package-dimension change flags on 7 SKUs; max fee impact $0 (no size-tier change)."
+     "<b>Account Health Rating:</b> 204 · Order Defect Rate 0% (0/89, 60d) · 0 policy/compliance issues.",
+     "<b>Sales:</b> August MTD $336 vs ~$210 at the same point last month (up ~$126); run rate $1,735, tracking well above last month's $1,112 total. Yesterday $112.",
+     "<b>Restock:</b> Mental Mint 3-Pack (B0FN1XXM4N) critically low at 1 unit on hand — 99 units inbound (FC transfer). Zapple 3-Pack 7 on hand (33 inbound), Variety Pack 14 (33 inbound). Below-Stock report shows 0 items flagged.",
+     "<b>Listing hijacker check:</b> Blow It Gum is the sole seller — 0 unauthorized resellers on any ASIN, so no outside party holds the Buy Box or can edit the detail page. Amazon flagged image / A+ / BSR changes on the three 2-Packs (plus variation-level flags on the 3-Packs); confirm those edits were made by the brand, not an outside party changing the PDP.",
+     "<b>Listing Protection:</b> image / A+ / BSR change flags on the three 2-Packs; variation-level flags on the 3-Packs — monitor for unwanted edits.",
+     "<b>Dimensions:</b> package-dimension change flags on all 7 SKUs; max fee impact $0 (no size-tier change)."
     ]},
   gap:{us:37, usl:"37", them:17600, theml:"Neuro Gum 17.6K", themName:"Neuro Gum"},
   frontend:{
-    date:"August 6, 2026",
-    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Blow It Gum sole seller · A+ content. 11 SKUs across 7 unique ASINs (the 3-Pack &amp; Variety SKUs pair an FBA + FBM offer on one page). All 11 pass all four checks — bullets, Buy Box, seller integrity, and A+ Content are all in order. No open frontend defects; the concern this run is inventory depth on three 3-Packs.`,
-    stats:[["11","SKUs checked (7 unique ASINs)"],["0","Buy Box defects"],
-      ["0","Missing A+"],["0","Unauthorized resellers"],
-      ["$120","Aug MTD · run rate $1.2K"]],
+    date:"August 8, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Blow It Gum sole seller · A+ content. 8 offered child ASINs in the "Caffeinated Xylitol Gum" family. 7 of 8 pass all four checks — 5 real bullets, active Buy Box sold by Blow It Gum (FBA), no unauthorized sellers, and A+ / From-the-Brand content present. 1 of 8 fails: the deleted Crazy Colada 3-Pack (B0F8RZR16S) returns a 404, but a live equivalent (B0FN22NT9X) exists, so impact is limited. The real risk this run is inventory depth — the Mental Mint 3-Pack is down to 1 unit.`,
+    stats:[["8","ASINs checked"],["1","404 / deleted listing"],
+      ["0","Unauthorized resellers"],
+      ["$336","Aug MTD · run rate $1.7K"]],
     rows:[
-     ["Mental Mint 3-Pack · B0FN1XXM4N","In stock — 1 unit left",`Passes all four checks; Buy Box held. <span class="fail">Critically low — 1 unit</span>: imminent stockout (went "Currently unavailable" on 07/23). Replenish now.`],
-     ["Zapple 3-Pack · B0FN1ZS2PG","Low stock — 9 left","Passes all four; Buy Box held by FBA twin — restock soon."],
-     ["Variety Pack · B0F9X668CZ","Low stock — 17 left","Passes all four; Buy Box held — replenish."]
+     ["Mental Mint 3-Pack · B0FN1XXM4N","In stock — 1 unit left",`Passes all four checks; Buy Box held. <span class="fail">Critically low — 1 unit</span>: imminent stock-out will drop this active ASIN. Replenish now (99 units inbound).`],
+     ["Crazy Colada 3-Pack · B0F8RZR16S",`<span class="fail">404 — listing deleted</span>`,"Fails all four (Page Not Found), marked 'Listing deleted' in VOC. A live equivalent (B0FN22NT9X) exists — kill any ads/links pointing to the dead page."],
+     ["Mental Mint 2-Pack · B0H3K374NM","In stock — Very Poor VOC","Passes all four content checks; the issue is returns/reviews: 2.5★, NCX 12.5%, 'performance/quality not adequate.'"]
     ],
-    urgent:`<b>Most urgent — replenish the Mental Mint 3-Pack (B0FN1XXM4N), down to 1 unit.</b> At the next sale it will stock out and lose its Buy Box, exactly as it did on 07/23 when the ASIN went "Currently unavailable." There are no frontend content defects to fix — every SKU passes all four checks — so the only real risk is inventory depth. Zapple 3-Pack (9 units) is next in line, then the Variety Pack (17). Also monitor the standing CX item on the Mental Mint 2-Pack (see Account health).`,
-    trend:`No open frontend defects — all 11 SKUs pass all four checks, unchanged from the last audit (A+ live on the three 2-Packs, Mental Mint 3-Pack holding its Buy Box). The concern is inventory depth: Mental Mint 3-Pack down to 1 unit, Zapple 3-Pack 9, Variety Pack 17. No unauthorized sellers; Account Health Healthy; Featured Offer 100%.`
+    urgent:`<b>Most urgent — replenish the Mental Mint 3-Pack (B0FN1XXM4N), down to 1 unit.</b> At the next sale it will stock out and lose its Buy Box; 99 units are inbound via FC transfer, so confirm the timing. Close seconds: the dead 404 page for the deleted Crazy Colada 3-Pack (B0F8RZR16S) — kill any ads or links pointing to it — and the standing Very Poor CX on the Mental Mint 2-Pack (B0H3K374NM), a return/reputation risk rather than a page defect. No changes were made; all items are surfaced for the owner's decision.`,
+    trend:`7 of 8 offered ASINs pass all four checks (5 bullets, Buy Box, sole seller, A+). The one failure is the deleted Crazy Colada 3-Pack (B0F8RZR16S, 404) — a live equivalent exists, so commercial impact is limited. No unauthorized sellers on any live listing; Account Health Healthy (AHR 204, ODR 0%). The active risk is inventory depth — Mental Mint 3-Pack at 1 unit (99 inbound).`
   },
   findings:[
    ["Product spec","Listing states no caffeine content — the category's #1 decision spec.","State mg caffeine per piece in title, bullets, images, A+ immediately.","Critical","For approval","For client / Hunter approval to add caffeine mg in the title."],

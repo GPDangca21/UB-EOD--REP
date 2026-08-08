@@ -8,7 +8,7 @@
   :root{
     --navy:#1F3A5F; --teal:#2E8B8B; --coral:#E07856; --light:#EAF1F1;
     --band:#F5F8F8; --ink:#222; --grey:#5A5A5A; --line:#dfe7e7;
-    --crit:#B00020; --high:#E07856; --med:#5A5A5A; --good:#0A7A0A;
+    --crit:#B00020; --high:#E07856; --med:#5A5A5A; --good:#0A7A0A; --warn:#C77700;
     --bg:#f4f6f7;
   }
   *{box-sizing:border-box}
@@ -81,11 +81,15 @@
   /* account health card */
   .ahcard{background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.06);
     padding:16px 18px;border-left:4px solid var(--good)}
-  .ahcard.issue{border-left-color:var(--crit)}
-  .ahcard .ahtop{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+  .ahcard.tone-good{border-left-color:var(--good)}
+  .ahcard.tone-warn{border-left-color:var(--warn)}
+  .ahcard.tone-crit{border-left-color:var(--crit)}
+  .ahcard .ahtop{display:flex;justify-content:space-between;align-items:center;gap:8px}
   .ahcard h3{margin:0;font-size:15px;color:var(--navy)}
-  .ahcard .st{font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:20px;color:#fff;white-space:nowrap;background:var(--good)}
-  .ahcard.issue .st{background:var(--crit)}
+  .ahcard .st{font-size:10.5px;font-weight:700;padding:4px 11px;border-radius:20px;color:#fff;white-space:nowrap;background:var(--good);text-transform:uppercase;letter-spacing:.03em}
+  .ahcard .st.tone-good{background:var(--good)}
+  .ahcard .st.tone-warn{background:var(--warn)}
+  .ahcard .st.tone-crit{background:var(--crit)}
   .ahcard .ahnote{font-size:13px;color:var(--grey)}
   .asin{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--navy);font-weight:700}
 
@@ -539,6 +543,12 @@ function frontendBlock(b){
    <div class="bh-urgent">${f.urgent}</div>
    <p class="bh-note">${f.trend}</p>`;
 }
+function accTone(a){
+  const lab=(a.label||'');
+  if(/at\s*risk/i.test(lab)) return 'crit';
+  if(a.status==='issue') return 'warn';
+  return 'good';
+}
 document.getElementById('brandpanels').innerHTML = brands.map(b=>`
  <div class="panel" id="tab-${b.id}">
    <div class="subnav" role="tablist">
@@ -577,10 +587,9 @@ document.getElementById('brandpanels').innerHTML = brands.map(b=>`
    <div class="subpanel" data-sub="ah">
      <div class="sect" style="margin-top:16px">
        <h2>Account health checks</h2>
-       <p class="sub">Read-only account status. Green = no urgent issues; red = active issue under troubleshooting.</p>
-       <div class="ahcard ${b.account.status==='issue'?'issue':''}">
-         <div class="ahtop"><h3>${b.name}</h3><span class="st">${b.account.label}</span></div>
-         <div class="ahnote">${b.account.note}</div>
+       <p class="sub">Read-only account status. Green = healthy, no urgent issues; amber = action needed; red = at-risk / active issue under troubleshooting.</p>
+       <div class="ahcard tone-${accTone(b.account)}">
+         <div class="ahtop"><h3>${b.name}</h3><span class="st tone-${accTone(b.account)}">${b.account.label}</span></div>
        </div>
        ${b.account.tracker?accountTrackerTable(b.account.tracker,b.account.trackerDate,b.name):''}
        ${b.account.kapoq?kapoqPanel(b.account.kapoq):''}

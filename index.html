@@ -35,9 +35,10 @@
   .tab:hover{border-color:var(--teal);background:var(--band)}
   .tab.active{background:var(--navy);color:#fff;border-color:var(--navy);
     box-shadow:0 4px 12px rgba(31,58,95,.4);transform:translateY(-1px)}
-  .tab .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:8px;vertical-align:middle}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:8px;vertical-align:middle;background:var(--good)}
+  .dot.dot-good{background:var(--good)} .dot.dot-warn{background:var(--warn)} .dot.dot-crit{background:var(--crit)}
   .tab .dot.issue{background:var(--crit)} .tab .dot.ok{background:var(--good)}
-  .tab.active .dot.ok{background:#7CFC9A}
+  .tab.active .dot.dot-good{background:#7CFC9A}
   .panel{display:none;animation:fade .25s ease}
   .panel.active{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
@@ -495,7 +496,7 @@ const plan = {
 /* ---------- TABS ---------- */
 const tabbar = document.getElementById('tabbar');
 let tabsHTML = `<span class="tablabel">View by brand →</span><button class="tab active" data-tab="summary">Summary</button>`;
-tabsHTML += brands.map(b=>`<button class="tab" data-tab="${b.id}">${b.name}<span class="dot ${b.account.status==='issue'?'issue':'ok'}"></span></button>`).join('');
+tabsHTML += brands.map(b=>`<button class="tab" data-tab="${b.id}">${b.name}<span class="dot dot-${accTone(b.account)}" title="${b.account.label}"></span></button>`).join('');
 tabbar.innerHTML = tabsHTML;
 
 /* ---------- BRAND PANELS ---------- */
@@ -553,7 +554,7 @@ document.getElementById('brandpanels').innerHTML = brands.map(b=>`
  <div class="panel" id="tab-${b.id}">
    <div class="subnav" role="tablist">
      <button class="subtab active" data-sub="pf">Portfolio at a glance</button>
-     <button class="subtab" data-sub="ah">Account health checks${b.account.status==='issue'?' <span class="dot issue" style="margin-left:6px"></span>':''}</button>
+     <button class="subtab" data-sub="ah">Account health checks <span class="dot dot-${accTone(b.account)}" style="margin-left:6px" title="${b.account.label}"></span></button>
      <button class="subtab" data-sub="fe">Frontend checks</button>
      <button class="subtab" data-sub="fr">Findings &amp; recommendations</button>
    </div>
@@ -587,10 +588,7 @@ document.getElementById('brandpanels').innerHTML = brands.map(b=>`
    <div class="subpanel" data-sub="ah">
      <div class="sect" style="margin-top:16px">
        <h2>Account health checks</h2>
-       <p class="sub">Read-only account status. Green = healthy, no urgent issues; amber = action needed; red = at-risk / active issue under troubleshooting.</p>
-       <div class="ahcard tone-${accTone(b.account)}">
-         <div class="ahtop"><h3>${b.name}</h3><span class="st tone-${accTone(b.account)}">${b.account.label}</span></div>
-       </div>
+       <p class="sub">Read-only account status. Each brand tab is color-flagged by state: <b style="color:var(--good)">green</b> = healthy; <b style="color:var(--warn)">amber</b> = action needed; <b style="color:var(--crit)">red</b> = at-risk / active issue.</p>
        ${b.account.tracker?accountTrackerTable(b.account.tracker,b.account.trackerDate,b.name):''}
        ${b.account.kapoq?kapoqPanel(b.account.kapoq):''}
      </div>

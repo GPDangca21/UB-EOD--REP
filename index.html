@@ -92,6 +92,15 @@
   .ahcard .st.tone-warn{background:var(--warn)}
   .ahcard .st.tone-crit{background:var(--crit)}
   .ahcard .ahnote{font-size:13px;color:var(--grey)}
+  /* SKU audit table */
+  .audit-h{margin:18px 0 6px;font-size:13px;color:var(--navy)}
+  .audit-wrap{overflow-x:auto}
+  table.audit{width:100%;border-collapse:collapse;font-size:12px}
+  table.audit th{background:var(--navy);color:#fff;padding:6px 8px;text-align:left;font-size:11px;white-space:nowrap}
+  table.audit td{border:1px solid var(--line);padding:6px 8px;vertical-align:top}
+  table.audit td.asin{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;white-space:nowrap}
+  table.audit td.ac{text-align:center;font-weight:700;white-space:nowrap}
+  .ac-pass{color:var(--good)} .ac-fail{color:var(--crit)} .ac-na{color:var(--grey);font-weight:400}
   .asin{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--navy);font-weight:700}
 
   /* review gap */
@@ -256,6 +265,16 @@ const brands = [
      ["BeginBaby + Stickers bundle · B0DNRNYPLR","Suppressed — currently unavailable",`<span class="fail">No Buy Box</span> — search-suppressed; the live page loads but isn't purchasable. Decide whether to restore or retire — low commercial impact.`],
      ["Growing Up 56 + Stickers bundle · B0F16Y4LD5","Suppressed — currently unavailable",`<span class="fail">No Buy Box + no A+</span> — search-suppressed and not purchasable. Decide whether to restore or retire — low commercial impact.`]
     ],
+    audit:[
+     [1,"GUMT56 — Daily Growing Up Magnesium Drink, 56 Servings","B0GYCTWQXB","PASS (5)","PASS","PASS","PASS","Sold by Begin Health / FBA. VOC CX Health 'Poor' — NCX 3.85% (1/26), 'Performance or quality not adequate'. Monitor."],
+     [2,"GUMP28 — Daily Growing Up Magnesium Drink, 28 Servings","B0GTQF2G7C","PASS (5)","PASS","PASS","PASS","Sold by Begin Health / FBA. Backend: Dietary Supplements GMP Certification issue — listing AT RISK of removal, deadline Oct 21 2026 (see account health)."],
+     [3,"GUPT56 — Growing Up Prebiotics for Kids, 56 Servings","B0CQMX2MZX","PASS (5)","PASS","PASS","PASS","Sold by Begin Health / FBA. 'Other sellers (2) from $70.00' — both at list price, no undercut; consistent with the brand's own FBA + FBM offers."],
+     [4,"GUPP28 — Growing Up Prebiotics for Kids, 28-Packs","B0CQMG9M12","PASS (5)","PASS","PASS","PASS","Sold by Begin Health / FBA. 'Other sellers' present at list price — the brand's own offers, no third-party undercutter."],
+     [5,"BBPP28 — Beginbaby Prebiotics + Probiotics, 28-Packs","B0D7DWJQ6S","PASS (5)","PASS","PASS","PASS","Sold by Begin Health / FBA. (Live ASIN is B0D7DWJQ6S; a look-alike code was cross-checked and corrected.)"],
+     [6,"GUP3P84 — Growing Up Prebiotics for Kids, 84-Packs","B0F3C3SX8H","PASS (5)","PASS","PASS","PASS","Sold by Begin Health / FBA. No other sellers."],
+     [7,"BeginBaby Prebiotics + 'Funny Poop Stickers' Pack Bundle","B0DNRNYPLR","PASS (5)","FAIL","N/A","PASS","Search-suppressed in Seller Central. Live page loads but shows 'Currently unavailable' — not purchasable, no Buy Box."],
+     [8,"Growing Up 56-Serv + 'Funny Poop Stickers' Pack Bundle","B0F16Y4LD5","PASS (5)","FAIL","N/A","FAIL","Search-suppressed in Seller Central. 'Currently unavailable' — not purchasable; A+ / 'From the brand' not present."]
+    ],
     urgent:`<b>No active, purchasable listing has a frontend defect</b> — all 6 core listings pass every check, so there's no conversion-costing content gap on a live seller today. The clearest frontend action is the two suppressed "Funny Poop Stickers" bundles (B0DNRNYPLR, B0F16Y4LD5): decide whether to restore them or retire them — commercial impact is low. Higher priority, but account-health rather than frontend, is the Magnesium 28-Serving (B0GTQF2G7C) GMP compliance case, with the listing at risk of removal by Oct 21 (tracked in Account health).`,
     trend:`All 6 active core listings pass all four checks (5 bullets, Buy Box, sole seller, A+), with no unauthorized resellers. The only flags are the two search-suppressed sticker bundles, which render but are "Currently unavailable." Account Health remains Healthy (AHR 700); the Magnesium GMP compliance case stays open in Account health.`
   },
@@ -302,6 +321,15 @@ const brands = [
     rows:[
      ["Mental Mint 3-Pack · B0FN1XXM4N","In stock — 1 unit left",`Passes all four checks; Buy Box held. <span class="fail">Critically low — 1 unit</span>: imminent stock-out will drop this active ASIN. Replenish now (99 units inbound).`],
      ["Mental Mint 2-Pack · B0H3K374NM","In stock — Very Poor VOC","Passes all four content checks; the issue is returns/reviews: 2.5★, NCX 12.5%, 'performance/quality not adequate.'"]
+    ],
+    audit:[
+     [1,"Variety Pack (Mental Mint, Crazy Colada, Zapple), 3-Pack (30 pc)","B0F9X668CZ","PASS (5)","PASS","PASS","PASS","Top seller (17 orders, 3.4★/37). In stock, 13 left. Sold by Blow It Gum, FBA. A+ and From-the-Brand present."],
+     [2,"Green Coffee Bean, Zapple, 3-Pack (30 pc)","B0FN1ZS2PG","PASS (5)","PASS","PASS","PASS","In stock, 7 left. 4.6★ (3). Excellent CX. All content present."],
+     [3,"Green Coffee Bean, Mental Mint, 3-Pack (30 pc)","B0FN1XXM4N","PASS (5)","PASS","PASS","PASS","LOW STOCK — only 1 unit left; imminent stock-out will drop this active ASIN (99 units inbound). 2.5★ (5)."],
+     [4,"Green Coffee Bean, Mental Mint, 2-Pack (20 pc)","B0H3K374NM","PASS (5)","PASS","PASS","PASS","VOC 'Very Poor': 2.5★ (5), NCX 12.5%, top reason 'Performance or quality not adequate' (100%). Content is fine — a product-satisfaction / return-risk issue."],
+     [5,"Green Coffee Bean, Crazy Colada, 3-Pack (30 pc)","B0FN22NT9X","PASS (5)","PASS","PASS","PASS","In stock. 4★ (2). All content present."],
+     [6,"Green Coffee Bean, Zapple, 2-Pack (20 pc)","B0H3JTTSN4","PASS (5)","PASS","PASS","PASS","In stock. 4.6★ (3). All content present."],
+     [7,"Green Coffee Bean, Crazy Colada, 2-Pack (20 pc)","B0H3JPZ9CY","PASS (5)","PASS","PASS","PASS","In stock. 4★ (2). All content present."]
     ],
     urgent:`<b>Most urgent — replenish the Mental Mint 3-Pack (B0FN1XXM4N), down to 1 unit.</b> At the next sale it will stock out and lose its Buy Box; 99 units are inbound via FC transfer, so confirm the timing. Also monitor the standing Very Poor CX on the Mental Mint 2-Pack (B0H3K374NM), a return/reputation risk rather than a page defect. No changes were made; all items are surfaced for the owner's decision.`,
     trend:`All 7 live ASINs pass all four checks (5 bullets, Buy Box, sole seller, A+). No unauthorized sellers on any listing; Account Health Healthy (AHR 204, ODR 0%). The active risk is inventory depth — Mental Mint 3-Pack at 1 unit (99 inbound).`
@@ -541,9 +569,18 @@ function frontendBlock(b){
      <p>${f.intro}</p>
      <table><thead><tr><th>Brand</th><th>SKU / ASIN</th><th>State</th><th>Issue</th></tr></thead>
        <tbody>${f.rows.map(r=>`<tr><td class="b-badge">${b.name}</td><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</tbody></table>
+     ${f.audit?`<h4 class="audit-h">SKU audit table — all offered ASINs</h4>
+     <div class="audit-wrap"><table class="audit"><thead><tr><th>#</th><th>SKU / Product</th><th>ASIN</th><th>Bullets</th><th>Buy Box</th><th>Unauth. Sellers</th><th>A+ Content</th><th>Notes</th></tr></thead>
+       <tbody>${f.audit.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td class="asin">${r[2]}</td>${auditCell(r[3])}${auditCell(r[4])}${auditCell(r[5])}${auditCell(r[6])}<td>${r[7]}</td></tr>`).join('')}</tbody></table></div>`:''}
    </div>
    <div class="bh-urgent">${f.urgent}</div>
    <p class="bh-note">${f.trend}</p>`;
+}
+function auditCell(v){
+  const s=(v==null?'':v).toString();
+  if(/^PASS/i.test(s)) return `<td class="ac ac-pass">${s}</td>`;
+  if(/^FAIL/i.test(s)) return `<td class="ac ac-fail">${s}</td>`;
+  return `<td class="ac ac-na">${s||'—'}</td>`;
 }
 function accTone(a){
   const lab=(a.label||'');

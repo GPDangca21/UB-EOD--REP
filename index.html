@@ -177,7 +177,7 @@
 <header>
   <div class="kick">Amazon Marketplace Intelligence</div>
   <h1>Portfolio Dashboard — 5 Brands</h1>
-  <p>End-of-day management review · August 8, 2026 · Read-only analysis of live Amazon Seller Central + public storefront data</p>
+  <p>End-of-day management review · August 10, 2026 · Read-only analysis of live Amazon Seller Central + public storefront data</p>
 </header>
 
 <div class="wrap">
@@ -220,7 +220,7 @@
   <div id="brandpanels"></div>
 
   <footer>
-    Prepared read-only from live Amazon data on August 8, 2026; figures fluctuate over time.<br>
+    Prepared read-only from live Amazon data on August 10, 2026; figures fluctuate over time.<br>
     Companion deliverables: per-brand Word reports · consolidated Excel workbook (with approval columns) · this dashboard.
   </footer>
 </div>
@@ -233,23 +233,23 @@ const brands = [
   issue:"Thin reviews vs. volume leaders; Magnesium invisible on its head term.",
   opp:"Monetize existing organic strength ('Overall Pick') via reviews, S&S, and the 2'-FL HMO story.",
   account:{status:"issue", label:"Action required — compliance",
-    note:`One open Food &amp; Product Safety case requires a document submission — full details in the Account health checks below. <b>Do not submit without approval.</b> AHR 700 (Healthy).`,
-    trackerDate:"August 8, 2026",
+    note:`One open Food &amp; Product Safety case requires a document submission — full details in the Account health checks below. <b>Do not submit without approval.</b> AHR 696 (Healthy).`,
+    trackerDate:"August 10, 2026",
     tracker:[
-     ["Compliance (Account Health)","One open Food &amp; Product Safety case: the Magnesium 28-Serving (GUMP28, B0GTQF2G7C) needs GMP certification — $129 in sales at risk and the listing is at risk of removal, with a submission deadline of Oct 21, 2026. It still sells normally today. Requires a document submission; do not submit without owner approval. The other 9 compliance categories are clear, Order Defect Rate is 0%, and the Account Health Rating is 700 (Healthy).","Action Required","High"],
-     ["Voice of the Customer","Customer experience is strong overall — 6 listings rated Excellent, 3 Good, and none Very Poor. One listing is rated Poor: the Magnesium 56-Serving (B0GYCTWQXB), at a 3.85% negative-experience rate (1 of 26 orders), 4.2 stars, for 'performance or quality not adequate'.","Open","Medium"],
-     ["Shipment discrepancies","Could not verify this run — the Shipments page timed out / failed to load after retries, and the legacy queue returned a 404. The new Amazon Shipments experience was unstable on 08/08; re-check next run.","Open","Medium"],
+     ["Compliance (Account Health)","One open Food &amp; Product Safety case (unchanged): the Magnesium 28-Serving (GUMP28, B0GTQF2G7C) needs GMP certification — $129 in sales at risk and the listing is at risk of removal, with a submission deadline of Oct 21, 2026. It still sells normally today and now surfaces under the 'Food &amp; Product Safety Issues' category. Requires a document submission; do not submit without owner approval. The other 9 policy categories are clear, Order Defect Rate is 0%, and the Account Health Rating is 696 (Healthy, down from 700).","Action Required","High"],
+     ["Voice of the Customer","Customer experience is strong overall — 6 listings rated Excellent, 3 Good, and none Very Poor. One listing is rated Poor: the Magnesium 56-Serving (B0GYCTWQXB), at a 3.85% negative-experience rate (1 of 26 orders), 4.1 stars, for 'performance or quality not adequate'.","Open","Medium"],
+     ["Shipment discrepancies","Verified this run (the Shipments page had been timing out): 4 closed shipments show Located-vs-Expected differences — LGB8 55/54, MDW2 642/648 (−6), MCC1 358/332 (+26) and PSP3 418/420 (−2), a net 8 units short across the two short shipments. The two shortfalls (MDW2, PSP3) may warrant an FBA reimbursement review.","Monitor","Medium"],
      ["Suppressed listings","2 search-suppressed (unchanged) — the BeginBaby + Stickers bundle (B0DNRNYPLR) and the 56-Pack Sticker Set (B0F16Y4LD5), both sticker-pack bundles. All single-pack ASINs are active.","Monitor","Low"],
      ["Pricing","Pricing is clean — no offers deactivated for pricing errors, none ineligible for the Featured Offer, and no pricing issues flagged.","Clear","Low"],
      ["Stranded inventory","No stranded inventory — nothing stuck in Amazon's fulfillment centers.","Clear","Low"],
      ["Missing Buy Box","No genuine Buy Box loss. The three 'missing-offer' items are the two suppressed sticker bundles (B0DNRNYPLR, B0F16Y4LD5) plus one tracker bundle (B0DNRNCT15). All 9 active listings won the Featured Offer.","Clear","Low"],
-     ["Promotions","Six promotions active or upcoming. Running now: Save 15% and Save 10% Subscribe &amp; Save coupons, Save 15% Magnesium, and Save 20% Growing Up Magnesium. Upcoming for Q4: Black Friday / Cyber Monday (Nov 19–30) and Prime Big Deal Days, 3 ASINs each.","Info","Low"]
+     ["Promotions","Six promotions active or upcoming. Running now: Save 15% and Save 10% Subscribe &amp; Save coupons, Save 15% Magnesium, and Save 20% Growing Up Magnesium (ends Aug 19). Upcoming for Q4: Black Friday / Cyber Monday (Nov 19–30) and Prime Big Deal Days, 3 ASINs each.","Info","Low"]
     ],
     kapoq:[
-     "<b>Account Health Rating:</b> 700 (Healthy), down from 704. The open compliance case has not affected the rating yet.",
+     "<b>Account Health Rating:</b> 696 (Healthy), down from 700. The open compliance case has not affected the rating yet.",
      "<b>Listings:</b> All single-pack listings are clear; only the two sticker bundles are search-suppressed. Hero listings score 0.89–0.94, with A+ content live on all of them.",
-     "<b>Sales:</b> August month-to-date is $34,921, up 7.2% versus $32,482 at the same point last month. The monthly run rate is $160,146 (last month's total was $155,324), and the daily average is $5,166.",
-     "<b>Restock:</b> The Below-Stock report is empty, but Amazon flags the Beginbaby 28-pack (BBPP28A) and Growing Up 56-Serving (GUPT56) as low on stock — recommended ship-in by Aug 14–15.",
+     "<b>Sales:</b> August month-to-date is $45,732 versus $47,463 at the same point last month (−3.7%). The monthly run rate is $153,947, roughly flat against last month's $154,974 total, and the daily average is $4,966.",
+     "<b>Restock:</b> The Below-Stock report is empty, but Amazon flags the Beginbaby 28-pack (BBPP28A) and Growing Up 56-Serving (GUPT56) as low on stock — recommended ship-in by Aug 15.",
      "<b>Listing hijacker check:</b> Begin Health is the sole seller — 0 unauthorized resellers, so no outside party holds the Buy Box or can edit the PDP. Watch the flagged SKUs below to confirm any title / image / A+ change is brand-made, not an outside party changing the detail page.",
      "<b>Listing Protection:</b> Change flags on the title, image, A+, and BSR fields of six SKUs (BBPP28, GUMP28, GUMT56, GUPT56, GUPP28, GUP3P84) — monitor for unwanted edits.",
      "<b>Dimensions:</b> Package-dimension change flags on nine SKUs, but no size-tier change, so there is no fee impact."

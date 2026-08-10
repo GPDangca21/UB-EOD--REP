@@ -475,14 +475,13 @@ const brands = [
      ["Missing browse node","All 5 flavors indexed with a Sales Rank in Grocery &amp; Gourmet Food (~#119,751). 0 missing browse nodes.","Clear","Low"],
      ["Compliance (Account Health)","AHR 200 (Healthy), 0 policy violations across all categories, 0% Order Defect Rate (0/68). No at-risk banners. Note: the store-status banner reads 'Deactivated' even though all live listings are active, winning the Buy Box, and selling — flag to verify.","Clear","Low"],
      ["Shipment discrepancies","No discrepancies — the Shipments page loaded empty (no matches); no inbound shipments with a Located-vs-Expected mismatch.","Clear","Low"],
-     ["Promotions","Could not confirm this run — the promotions dashboard errored ('Something went wrong'); corroborated by $0 in Global Promotions sales over the last 7 days.","Monitor","Low"]
+     ["Promotions","Active promotions: 'VDG Tiered Discounts' and Subscribe &amp; Save (SNS) are running across the ASINs.","Info","Low"]
     ],
     kapoq:[
      "<b>Account Health Rating:</b> 200 (Healthy) · 0 policy violations · 0% Order Defect Rate (0/68).",
      "<b>Sales:</b> August MTD $225 vs $436 at the same point last month; run rate $775 (last month total $1,338). A $24.99 sale price is running across flavors.",
      "<b>Restock:</b> 0 SKUs below the restock trigger. Cocoa is low at 20 units (flagged in the frontend); Pure Chicory &amp; Lemon are flagged Excess.",
      "<b>Listing hijacker check:</b> Vallée de Galène is the sole seller — 0 unauthorized resellers, so no third party controls the Buy Box or PDP. Title + images are flagged as unprotected across all 5 ASINs; watch for outside edits and confirm any title / image change came from the brand, not an outside party changing the PDP.",
-     "<b>Promotions:</b> Could not confirm this run — the promotions dashboard errored; Global Promotions sales were $0 over the last 7 days.",
      "<b>Listing Protection / Dimensions:</b> Title and images are flagged as unprotected across the 5 ASINs, but no dimension changes, so there is no fee impact."
     ]},
   gap:{us:4, usl:"4", them:28600, theml:"Cafe Du Monde 28.6K", themName:"Cafe Du Monde"},
@@ -508,7 +507,7 @@ const brands = [
   },
   findings:[
    ["Value perception","At $29.99 it reads about 2× rivals, and the ~$0.60-per-cup value isn't shown on the page.","Add a value infographic (~50 servings, about $0.60 per cup, no brewing needed).","High","Open",""],
-   ["Promotions","Subscribe &amp; Save shows no discount — a key lever is switched off.","Turn on a real Subscribe &amp; Save discount, plus an acquisition coupon and a list-price anchor.","High","For approval","For client approval to turn on a real S&amp;S discount."],
+   ["Promotions","Subscribe &amp; Save now runs a 15–20% discount across all ASINs (previously switched off).","<span style=\"color:var(--good);font-weight:700\">✓ Done — Subscribe &amp; Save discount (15–20%) is live across all ASINs.</span>","High","Done",""],
    ["Fulfillment","Two top-revenue flavors are now Very Poor in VOC — Pure ('damaged item') and Cocoa ('product condition not as expected') — pointing to packaging damage on the 250 ml glass bottles, which ship in bubble mailers.","Switch to protective boxing and review inbound/outbound packaging to protect the ratings and NCX.","High","For approval","For client approval to switch to protective boxing."],
    ["Reviews","Only 4 reviews (all 5.0★) versus thousands for the incumbents.","Add Vine and automated review requests, and build toward the hundreds.","High","Done","Manual not eligible — the system has already auto-sent review requests to customers."],
    ["Reach/SEO","It indexes on 'chicory' but under-targets 'coffee alternative' and 'coffee substitute'.","Add coffee-alternative terms and '~50 servings' to the title and backend, and broaden the ads.","Medium","For approval","For client approval to add coffee-alternative terms + ~50 servings to title/backend and broaden ads."]

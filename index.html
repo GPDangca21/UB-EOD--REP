@@ -349,43 +349,50 @@ const brands = [
   issue:"Account AT RISK; FBM 6–7 day shipping on hero; Closed/out-of-stock listings.",
   opp:"Fix operations first, then own the hormone-safe / sensitive-skin clean-tan niche.",
   account:{status:"issue", label:"At Risk — seller-fulfilled OTDR",
-    note:`Seller-fulfilled offers flagged <b>At Risk of deactivation</b>: On-Time Delivery Rate has dropped further to <b>82.61%</b> (57/69), still below the 90% target (down from 85.29% on 08/04). Policy compliance is otherwise clean — AHR <b>212</b>, 0 violations, 0% ODR, valid tracking 100%. Priority: lift OTDR (ship on time / valid tracking / Buy Shipping) to clear the flag before it deactivates seller-fulfilled offers.`,
-    trackerDate:"August 7, 2026",
+    note:`Seller-fulfilled offers flagged <b>At Risk of deactivation</b>: On-Time Delivery Rate has slipped further to <b>82.09%</b> (55/67), still below the 90% target (down from 82.61% on 08/07). Policy compliance is otherwise clean — AHR <b>212</b>, 0 violations, 0% ODR. Priority: lift OTDR (ship on time / valid tracking / Buy Shipping) to clear the flag before it deactivates seller-fulfilled offers.`,
+    trackerDate:"August 10, 2026",
     tracker:[
-     ["Compliance (Account Health)","AHR 212 (Healthy), 0 policy violations across all 10 categories, 0% Order Defect Rate, valid tracking 100% — but the account is flagged AT RISK: seller-fulfilled On-Time Delivery Rate dropped further to 82.61% (57/69), still below the 90% target (down from 85.29% on 08/04). A critical event raising deactivation risk on seller-fulfilled offers. Prioritize OTDR (ship on time / valid tracking / Buy Shipping).","Action Required","High"],
-     ["Shipment discrepancies","LBE1 (FBA199PG99RV) received 110/140 — 30-unit shortfall (~$570), Closed; follow up before the claim window closes. LAS1 (FBA18ZC65SKY) 95/96 (1 short). 08/07 re-check: the Shipments page returned no matches; the closed discrepancies still need re-verification within their claim windows before marking resolved.","Open","Low"],
+     ["Compliance (Account Health)","AHR 212 (Healthy), 0 policy violations across all 10 categories, 0% Order Defect Rate — but the account is flagged AT RISK: seller-fulfilled On-Time Delivery Rate slipped further to 82.09% (55 of 67 units), still below the 90% target (down from 82.61% on 08/07). This keeps seller-fulfilled offers at risk of deactivation. Prioritize OTDR (ship on time / valid tracking / Buy Shipping).","Action Required","High"],
+     ["Shipment discrepancies","Five closed inbound shipments were received short by ~122 units total — LBE1 (−30), ONT8 (−48), GYR2 (−41), ABE8 (−2) and LAS1 (−1). All are old (Jul 2025 – Mar 2026) and likely past the reimbursement window, but worth a review for any open claims.","Open","Low"],
      ["Suppressed listings","No search-suppressed listings. 6 SKUs inactive from zero inventory (out-of-stock/closed) — a stock status, not content suppression.","Clear","Low"],
      ["Pricing","0 offers deactivated for pricing errors, 0 ineligible for Featured Offer, 0 close to Featured Offer price.","Clear","Low"],
      ["Stranded inventory","0 stranded — no active FBA inventory stuck in fulfillment centers.","Clear","Low"],
      ["Missing Buy Box","Healthy — all active, in-stock listings hold the Featured Offer. (Korean Exfoliating Mitt B0FWCL9TWN shows no offer — both FBM &amp; FBA out of stock.)","Clear","Low"],
-     ["Voice of the Customer","CX Health strong: 5 Excellent, 2 Good, 0 Poor / Very Poor across 7 offers. No NCX flags.","Clear","Low"],
+     ["Voice of the Customer","CX Health strong: 4 Excellent, 2 Good, 0 Poor / Very Poor. No negative customer-experience issues flagged.","Clear","Low"],
      ["Promotions","No active promotions; 3 Brand Tailored Promotions all Complete / expired.","Info","Low"]
     ],
     kapoq:[
      "<b>Account Health Rating:</b> 212 (Healthy) · 0 policy violations · 0% Order Defect Rate · valid tracking 100%.",
-     "<b>On-Time Delivery Rate:</b> Dropped to 82.61% seller-fulfilled (57 of 69) — still below the 90% target, and down from 85.29% on 08/04. The At-Risk banner remains.",
-     "<b>Sales:</b> August MTD $696 vs $476 at the same point last month; run rate $2,572 (last month total $3,329).",
-     "<b>Restock:</b> 0 SKUs below the restock trigger. Luxury Tanning Brush (B0FMVBSMYP) now at 37 units; Korean Exfoliating Mitt (B0FWCL9TWN) still fully out of stock on both offers.",
+     "<b>On-Time Delivery Rate:</b> Slipped to 82.09% seller-fulfilled (55 of 67) — still below the 90% target, and down from 82.61% on 08/07. The At-Risk banner remains.",
+     "<b>Sales:</b> August MTD $1,092 vs $706 at the same point last month; run rate $3,763 (last month total $3,329).",
+     "<b>Restock:</b> One SKU below the restock trigger — the Self Tanning Mitt (B0FWCRY85N), reorder ~21 units, next order due today. Low stock across the active catalog: Self Tanner (B0DND236Z2) 3 left, Face Mist (B0F6KLM72J) 9, Self Tanning Mitt 12. The Korean Exfoliating Mitt (B0FWCL9TWN) is fully out of stock.",
      "<b>Listing hijacker check:</b> Elan Pure is the sole seller — 0 unauthorized resellers, so no third party controls the Buy Box or PDP. Change flags are present on the listings (no size-tier / dimension change); verify each title / image / A+ edit came from the brand, not an outside party changing the PDP.",
-     "<b>Listing Protection / Dimensions:</b> Change flags are present, but no size-tier change, so there is no fee impact."
+     "<b>Listing Protection / Dimensions:</b> Change flags on 4 SKUs (mainly image), plus 1 dimension flag on the Self Tanning Mitt — no size-tier change, so there is no fee impact."
     ]},
   gap:{us:57, usl:"57", them:27800, theml:"Beauty by Earth 27.8K", themName:"Beauty by Earth"},
   frontend:{
-    date:"August 7, 2026",
-    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Elan Pure sole seller · A+ content. 5 unique ASINs (11 SKU-listings). No unauthorized sellers and A+ renders on every live page. Open defects: the Luxury Tanning Brush shows only 4 bullets, and the Korean Exfoliating Mitt is unbuyable (out of stock). The account-level seller-fulfilled OTDR is At Risk (see Account health).`,
-    stats:[["5","ASINs checked (11 SKUs)"],["2","ASINs flagged"],
-      ["0","Unauthorized resellers"],["0","Missing A+ (live pages)"],
-      ["$696","Aug MTD · run rate $2.6K"]],
+    date:"August 10, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Elan Pure sole seller · A+ content. 5 unique live ASINs. 3 of 5 pass all four checks. <b>Improvement:</b> the top-seller Non-Toxic Gradual Self Tanner (B0DND236Z2) now shows 6 real "About this item" bullets — up from a spec-only table on 08/07. Open defects: the Luxury Tanning Brush shows only 4 bullets (needs ≥5), and the Korean Exfoliating Mitt is unbuyable (out of stock). No unauthorized sellers. The account-level seller-fulfilled OTDR remains At Risk (see Account health).`,
+    stats:[["5","ASINs checked"],["2","ASINs flagged"],
+      ["0","Unauthorized resellers"],
+      ["$1.1K","Aug MTD · run rate $3.8K"]],
     rows:[
      ["Korean Exfoliating Mitt · B0FWCL9TWN","Currently unavailable",`<span class="fail">Buy Box lost</span> — both FBM &amp; FBA out of stock; unbuyable.`],
-     ["Luxury Tanning Brush · B0FMVBSMYP","In stock — 37 units",`<span class="fail">Only 4 bullets</span> (needs ≥5); Buy Box won at $14.00. Restocked to 37 — bullet count is its only defect.`]
+     ["Luxury Tanning Brush · B0FMVBSMYP","In stock — 4 bullets",`<span class="fail">Only 4 bullets</span> (needs ≥5); Buy Box held. Bullet count is its only defect (persists from 08/07).`]
     ],
-    urgent:`<b>Summary:</b> Every active listing passes its content checks; the priority is account-level — seller-fulfilled OTDR at 82.61% keeps the account At Risk. Listing-level, add a 5th bullet to the Tanning Brush (B0FMVBSMYP) and decide on the out-of-stock Exfoliating Mitt (B0FWCL9TWN).`,
-    trend:`Change since last audit: the Tanning Brush is now well-stocked at 37 units (still 4 bullets). The account "At Risk" banner remains and OTDR declined further to 82.61% (from 85.29% on 08/04). No unauthorized sellers; A+ renders on every live page.`
+    audit:[
+     [1,"Non Toxic Gradual Self Tanner (Foam, Vanilla) — top seller · EP-TF-001","B0DND236Z2","PASS (6)","PASS","PASS","PASS","'Only 3 left in stock' — imminent stockout of the #1 revenue ASIN. Bullets now real marketing copy (improved from spec-only on 08/07)."],
+     [2,"Luxury Tanning Brush (Face, Hands, Feet) · EP-TB-001","B0FMVBSMYP","FAIL (4)","PASS","PASS","PASS","Only 4 'About this item' bullets — needs ≥5. In stock. Persists from the 08/07 baseline."],
+     [3,"Face Tanning Mist (Sunless, Bronzing) · EP-FTS-001","B0F6KLM72J","PASS (6)","PASS","PASS","PASS","'Only 9 left in stock' — low-stock watch."],
+     [4,"Self Tanning Mitt (Velvet Applicator) · EP-TM-001","B0FWCRY85N","PASS (6)","PASS","PASS","PASS","'Only 12 left in stock' — flagged in KAPOQ Below-Restock (reorder ~21 units, next order due today)."],
+     [5,"Korean Exfoliating Mitt (Body Exfoliator) · EP-EM-001","B0FWCL9TWN","PASS (5)","FAIL","N/A","PASS","'Currently unavailable' — no Buy Box (matches Seller Central Out-of-stock). Not buyable."]
+    ],
+    urgent:`<b>Summary:</b> Two priorities — the account is At Risk on seller-fulfilled OTDR (82.09%), and the top seller Self Tanner (B0DND236Z2) is down to 3 units, an imminent stockout of the #1 revenue ASIN. Then add a 5th bullet to the Tanning Brush (B0FMVBSMYP) and decide on the out-of-stock Korean Exfoliating Mitt (B0FWCL9TWN).`,
+    trend:`<b>Improved:</b> the top-seller Self Tanner now shows 6 real bullets (up from spec-only on 08/07). OTDR slipped further to 82.09% (from 82.61%), so the At-Risk banner remains. The Tanning Brush still needs a 5th bullet, and the Korean Exfoliating Mitt is out of stock. No unauthorized sellers.`
   },
   findings:[
    ["Account health","The account is At Risk — seller-fulfilled On-Time Delivery Rate has fallen to 82.61% (57 of 69 on time), below the 90% target and down from 85.29% on 08/04. Several SKUs are still out of stock or closed.","Lift On-Time Delivery Rate — ship on time, add valid tracking, and use Buy Shipping — to clear the At-Risk flag, and reactivate the dead SKUs.","Critical","Open",""],
-   ["Listing content","The top seller, the Non-Toxic Gradual Self Tanner (B0DND236Z2), shows no real 'About this item' bullets — just a spec table — even though it's live and winning the Buy Box. The Tanning Brush (B0FMVBSMYP) shows only 4 bullets.","Add at least 5 benefit-driven bullets to the top seller, and a 5th bullet to the Tanning Brush.","High","Open",""],
+   ["Listing content","The top-seller Non-Toxic Gradual Self Tanner (B0DND236Z2) now shows 6 real 'About this item' bullets — resolved from the earlier spec-only table. The Luxury Tanning Brush (B0FMVBSMYP) still shows only 4 bullets.","Add a 5th bullet to the Tanning Brush; the top seller's bullets are now done.","High","WIP","Self Tanner bullets resolved 08/10; Tanning Brush 5th bullet still open."],
    ["Fulfillment","The buyable hero ships seller-fulfilled with 6–7 day delivery, against Prime rivals.","Move the heroes to FBA / Prime fulfillment for faster delivery.","Critical","Open",""],
    ["Listing / browse node","The Korean Exfoliating Mitt (B0FWCL9TWN / EP-EM-001) is missing its Sales Rank and browse node.","Review the browse-node / category assignment once it's back in stock.","Low","Closed","OOS."],
    ["Positioning","The 'natural self tanner' space is dominated by Beauty by Earth (27.8K reviews, $36, Prime).","Narrow the positioning to hormone-safe / pregnancy-friendly / sensitive-skin clean tanning.","High","Closed","Has been added to the generic search-term attribute."],

@@ -407,40 +407,46 @@ const brands = [
   issue:"Tiny review base; top-of-category price reliant on a 35% coupon; no video.",
   opp:"Convert a loved all-in-one product (energy+hydration+focus) into scale.",
   account:{status:"ok", label:"Healthy — AHR 208",
-    note:`Account Health Rating <b>208 (Healthy)</b>, 0 policy violations across all 10 categories, 0% Order Defect Rate (0/310). No account-level risk. One inventory action item: 2 hero flavors — Variety Pack (B0GNZLMK1D) &amp; Blood Orange (B0GNZNHQ14) — are out of stock and dark; restock to regain the Buy Box.`,
-    trackerDate:"August 7, 2026",
+    note:`Account Health Rating <b>208 (Healthy)</b>, 0 policy violations across all 10 categories, 0% Order Defect Rate (0/321). No account-level risk. One inventory action item: 2 hero flavors — Variety Pack (B0GNZLMK1D) &amp; Blood Orange (B0GNZNHQ14) — are out of stock and dark; restock to regain the Buy Box.`,
+    trackerDate:"August 10, 2026",
     tracker:[
      ["Missing Buy Box / restock","6 out-of-stock listings lack a Featured Offer (due to OOS) — including hero flavors Variety Pack (B0GNZLMK1D) &amp; Blood Orange (B0GNZNHQ14). All in-stock active ASINs hold the Buy Box. Restock the OOS listings to regain it.","Action needed","High"],
-     ["Suppressed listings","0 search-suppressed / 0 at-risk. 6 listings inactive from out-of-stock — need replenishment to restore Buy Box and sales.","Monitor","Low"],
-     ["Compliance (Account Health)","AHR 208 (Healthy), 0 violations across all 10 compliance categories, ODR 0% (0/310 orders). No 'at risk' banners — account fully healthy.","Clear","Low"],
-     ["Missing browse node","All active listings retain a Sales Rank in Grocery &amp; Gourmet Food (~50.6k). 0 missing browse node.","Clear","Low"],
+     ["Suppressed listings","0 search-suppressed / 0 at-risk. 11 listings total — 4 active, 6 inactive, 6 out of stock; the inactive ones need replenishment to restore Buy Box and sales.","Monitor","Low"],
+     ["Compliance (Account Health)","AHR 208 (Healthy), 0 violations across all 10 compliance categories, ODR 0% (0/321 orders, 60d). No 'at risk' banners — account fully healthy. Note: emergency contact still shows unverified.","Clear","Low"],
+     ["Missing browse node","All active in-stock listings retain a Sales Rank in Grocery &amp; Gourmet Food (~54k). 0 missing browse node.","Clear","Low"],
      ["Pricing","0 offers deactivated for pricing errors, 0 ineligible for Featured Offer, 0 close to Featured Offer price.","Clear","Low"],
      ["Stranded inventory","0 stranded products.","Clear","Low"],
-     ["Shipment discrepancies","4 shipments — all Closed, reconciled 100% (PSC2 40/40, ABQ2 200/200, PSC2 250/250, HLI2 100/100). No discrepancies.","Clear","Low"],
+     ["Shipment discrepancies","Could not verify this run — the Shipments page timed out / failed to load after retries. Re-check next run.","Monitor","Low"],
      ["Voice of the Customer","CX Health strong: 5 Excellent across 5 offers; 0 Good / Fair / Poor / Very Poor. No NCX flags.","Clear","Low"],
      ["Promotions","0 active promotions — no standard or Brand Tailored promotions running.","Info","Low"]
     ],
     kapoq:[
-     "<b>Account Health Rating:</b> 208 (Healthy) · 0 policy violations · 0% Order Defect Rate (0/310).",
-     "<b>Sales:</b> August MTD $1,200 vs $1,320 at the same point last month (−9% month over month); run rate $5,766 (last month total $6,600).",
-     "<b>Restock:</b> 4 flavors below the restock trigger — Variety Pack 140 units (0 on hand), Piña Colada 100 (15 on hand), Pineapple Ginger 85 (13), Cactus Pear 76 (27). Variety Pack drove ~$1,678 in the trailing 30 days before selling out.",
+     "<b>Account Health Rating:</b> 208 (Healthy) · 0 policy violations · 0% Order Defect Rate (0/321).",
+     "<b>Sales:</b> August MTD $1,470 vs $2,370 at the same point last month; run rate $4,753 (last month total $6,570).",
+     "<b>Restock:</b> 4 flavors below the restock trigger, all due today — Variety Pack (reorder 114), Pineapple Ginger (90, 10 on hand), Tidal Wave / Piña Colada (86, 13 on hand), Cactus Pear (74, 26 on hand). The Variety Pack is the largest recoverable gap (66 orders in VOC).",
      "<b>Listing hijacker check:</b> Klar Labs is the sole seller — 0 unauthorized resellers across all flavors, so no outside party holds the Buy Box or can alter the PDP. Amazon flagged image / A+ / BSR changes across SKUs; confirm those edits are brand-made, not an unauthorized party changing the detail page.",
      "<b>Listing Protection / Dimensions:</b> Image / A+ / BSR change flags across the SKUs, but no dimension changes, so there is no fee impact."
     ]},
   gap:{us:23, usl:"~23", them:7100, theml:"CELSIUS 7.1K", themName:"CELSIUS"},
   frontend:{
-    date:"August 7, 2026",
-    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Klar Labs sole seller · A+ content. 5 unique live ASINs (11 SKU-listings). Every flavor shows 5 real "About this item" bullets (not just a spec table), every live page renders A+, and there are no unauthorized sellers. Two ASINs stay dark — Variety Pack and Blood Orange are both "Currently unavailable" (0 inventory) — and Piña Colada (15) and Pineapple Ginger (13) are running low.`,
-    stats:[["5","ASINs checked (11 SKUs)"],["2","ASINs flagged (both OOS)"],
-      ["0","Unauthorized resellers"],["0","Missing A+ (live pages)"],
-      ["$1,200","Aug MTD · run rate $5.8K"]],
+    date:"August 10, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Klar Labs sole seller · A+ content. 5 unique live ASINs (11 SKU-listings). 3 of 5 pass all four checks. Every flavor shows 5 real "About this item" bullets, every live page renders A+, and there are no unauthorized sellers. The 2 failures are Buy-Box-only: Variety Pack and Blood Orange are both "Currently unavailable" (0 inventory). Low stock: Pineapple Ginger (10 left) and Tidal Wave / Piña Colada (13).`,
+    stats:[["5","ASINs checked"],["2","ASINs flagged (OOS)"],
+      ["0","Unauthorized resellers"],
+      ["$1.5K","Aug MTD · run rate $4.8K"]],
     rows:[
-     ["Variety Pack · B0GNZLMK1D","Currently unavailable",`<span class="fail">Buy Box lost</span> — 0 inventory; unbuyable. 5 real bullets confirmed. Drove ~$1,678 in the trailing 30 days before selling out — the largest recoverable revenue.`],
-     ["Blood Orange · B0GNZNHQ14","Currently unavailable",`<span class="fail">Buy Box lost</span> — out of stock; unbuyable. 5 real bullets confirmed; restock to restore.`],
-     ["Piña Colada / Pineapple Ginger","Low stock — 15 / 13 left","Pass all four; Buy Box held — replenish before they follow the two dark ASINs. Cactus Pear is well stocked."]
+     ["Variety Pack · B0GNZLMK1D","Currently unavailable",`<span class="fail">Buy Box lost</span> — 0 inventory; unbuyable. 5 real bullets confirmed. Largest recoverable gap (66 orders in VOC).`],
+     ["Blood Orange · B0GNZNHQ14","Currently unavailable",`<span class="fail">Buy Box lost</span> — out of stock; unbuyable. 5 real bullets confirmed; restock to restore.`]
     ],
-    urgent:`<b>Summary:</b> Every purchasable listing is clean; the priority is restocking the two dark flavors — Variety Pack (B0GNZLMK1D) first (largest recoverable revenue), then Blood Orange (B0GNZNHQ14) — and replenishing Piña Colada (15) and Pineapple Ginger (13) before they follow.`,
-    trend:`Stable since the last audit: the same two flavors (Variety Pack, Blood Orange) remain out of stock — no new dark listings. Every live, purchasable listing is clean — 5 real bullets, A+, sole seller, Buy Box held. Piña Colada and Pineapple Ginger have edged down to 15 / 13 units. Account Health is fully Healthy (AHR 208, ODR 0%).`
+    audit:[
+     [1,"Cactus Pear 14 Pack · CP14-AMZ","B0GNZDMZLY","PASS (5)","PASS","PASS","PASS","Active, in stock. Sold by Klar Labs, ships from Amazon. Sales Rank #53,993 in Grocery &amp; Gourmet Food."],
+     [2,"Pineapple Ginger 14 Pack · PG14-AMZ","B0GNZFNDPJ","PASS (5)","PASS","PASS","PASS","In stock — LOW STOCK: only 10 left. Sold by Klar Labs. 5 real bullets, A+ present. Replenish soon."],
+     [3,"Tidal Wave (Piña Colada) 14 Pack · PC14-AMZ","B0GNZHZ498","PASS (5)","PASS","PASS","PASS","In stock — LOW STOCK: only 13 left. Sold by Klar Labs. 5 real bullets, A+ present. Replenish soon."],
+     [4,"Variety Pack 14 Pack · VAR14-AMZ","B0GNZLMK1D","PASS (5)","FAIL","N/A","PASS","'Currently unavailable' — 0 inventory; Buy Box loss expected (OOS, not a content/suppression defect). 5 real bullets and A+ still render. Restock to recover."],
+     [5,"Blood Orange 14 Pack","B0GNZNHQ14","PASS (5)","FAIL","N/A","PASS","'Currently unavailable' — out of stock; Buy Box loss expected. 5 real bullets and A+ still render. Restock to recover."]
+    ],
+    urgent:`<b>Summary:</b> Every purchasable listing is clean and there is no account-level risk (AHR 208). Priority is inventory: restock the two dark flavors — Variety Pack (B0GNZLMK1D) first (largest recoverable, 66 orders), then Blood Orange (B0GNZNHQ14) — and replenish Pineapple Ginger (10) and Tidal Wave (13) before they sell out.`,
+    trend:`3 of 5 flavors pass all four checks; the two failures are the out-of-stock Variety Pack and Blood Orange (Buy Box only). Pineapple Ginger (10) and Tidal Wave (13) are running low. No content, seller, or A+ defects on any listing. Account Health is fully Healthy (AHR 208, ODR 0%).`
   },
   findings:[
    ["Reviews","About 23 reviews (all 5.0★) versus thousands for CELSIUS, Alani, and Ghost.","Add Vine and automated review requests, and scale toward the hundreds.","High","Done","Manual not eligible — the system has already auto-sent review requests to customers."],

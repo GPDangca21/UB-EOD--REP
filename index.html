@@ -463,44 +463,52 @@ const brands = [
   issue:"Value hidden (~2× sticker); Subscribe & Save shows no discount; packaging damage.",
   opp:"Make value visible; own the no-brew liquid coffee-alternative niche.",
   account:{status:"ok", label:"Healthy — AHR 200",
-    note:`Account Health Rating <b>200 (Healthy)</b>, 0 policy violations, 0% Order Defect Rate (0/62), no at-risk banners. One CX action item: Cocoa (<span class="asin">B0GGHN9Y6Y</span>) — the top-selling flavor — carries the account's only <b>Very Poor</b> VOC (NCX 6.67%, 1 of 15, "product condition not as expected") and is low on stock. Vanilla / Elderberry / Lemon are Excellent. Review packaging on the 250 ml bottles.`,
-    trackerDate:"August 7, 2026",
+    note:`Account Health Rating <b>200 (Healthy)</b>, 0 policy violations, 0% Order Defect Rate (0/68), no at-risk banners. Two CX action items: Pure (<span class="asin">B0GGHS2BZK</span>, "damaged item") and Cocoa (<span class="asin">B0GGHN9Y6Y</span>, "product condition") are both <b>Very Poor</b> in VOC — a packaging/handling signal on the 250 ml glass bottles. The other three flavors are Excellent.`,
+    trackerDate:"August 10, 2026",
     tracker:[
-     ["Voice of the Customer","Cocoa (B0GGHN9Y6Y) slipped to Very Poor — NCX 6.67% (1 of 15 orders), top reason 'product condition not as expected'. Vanilla recovered to Excellent. CX split: 3 Excellent / 1 Very Poor. Monitor packaging / protection on the 250 ml bottles.","Action Required","High"],
+     ["Voice of the Customer","Two flavors are now Very Poor: Pure (B0GGHS2BZK) — NCX 6.25%, 'damaged item' — and Cocoa (B0GGHN9Y6Y) — NCX 6.67%, 'product condition not as expected'. The other three flavors are Excellent. Both complaints point to packaging / handling damage on the 250 ml glass bottles; review inbound/outbound protection and monitor NCX.","Action Required","High"],
      ["Suppressed listings","0 search-suppressed / 0 at-risk. All 5 SKUs in active/normal status.","Clear","Low"],
      ["Pricing","0 offers deactivated for pricing errors, 0 ineligible for Featured Offer, 0 close to Featured Offer price.","Clear","Low"],
      ["Stranded inventory","0 stranded — no active FBA inventory in fulfillment centers.","Clear","Low"],
      ["Missing Buy Box","No defect — active FBA SKUs hold the Featured Offer. OOS FBM SKUs show no offer (expected).","Clear","Low"],
-     ["Missing browse node","All 5 flavors indexed with a Sales Rank in Grocery &amp; Gourmet Food (#121,305; #175 in Coffee Substitutes). 0 missing browse nodes.","Clear","Low"],
-     ["Compliance (Account Health)","AHR 200 (Healthy), 0 policy violations across all categories, 0% Order Defect Rate (0/62). No at-risk banners.","Clear","Low"],
-     ["Shipment discrepancies","No discrepancies — Inbound Performance returned no results; no FBA inbound shipments.","Clear","Low"],
-     ["Promotions","1 active: 'VDG Tiered Discounts' (% off) running 07/08–12/31, budget $25,000, 0.62% utilized, 5 orders.","Info","Low"]
+     ["Missing browse node","All 5 flavors indexed with a Sales Rank in Grocery &amp; Gourmet Food (~#119,751). 0 missing browse nodes.","Clear","Low"],
+     ["Compliance (Account Health)","AHR 200 (Healthy), 0 policy violations across all categories, 0% Order Defect Rate (0/68). No at-risk banners. Note: the store-status banner reads 'Deactivated' even though all live listings are active, winning the Buy Box, and selling — flag to verify.","Clear","Low"],
+     ["Shipment discrepancies","No discrepancies — the Shipments page loaded empty (no matches); no inbound shipments with a Located-vs-Expected mismatch.","Clear","Low"],
+     ["Promotions","Could not confirm this run — the promotions dashboard errored ('Something went wrong'); corroborated by $0 in Global Promotions sales over the last 7 days.","Monitor","Low"]
     ],
     kapoq:[
-     "<b>Account Health Rating:</b> 200 (Healthy) · 0 policy violations · 0% Order Defect Rate (0/62).",
-     "<b>Sales:</b> August MTD $150 vs $75 at the same point last month; run rate $930 (down from $1,162; last month total $1,338). No sales the last two days. A $24.99 sale price is running across flavors.",
-     "<b>Restock:</b> 0 SKUs below the restock trigger. Cocoa is low at 15 units (flagged in the frontend); Pure Chicory &amp; Lemon are flagged Excess.",
+     "<b>Account Health Rating:</b> 200 (Healthy) · 0 policy violations · 0% Order Defect Rate (0/68).",
+     "<b>Sales:</b> August MTD $225 vs $436 at the same point last month; run rate $775 (last month total $1,338). A $24.99 sale price is running across flavors.",
+     "<b>Restock:</b> 0 SKUs below the restock trigger. Cocoa is low at 20 units (flagged in the frontend); Pure Chicory &amp; Lemon are flagged Excess.",
      "<b>Listing hijacker check:</b> Vallée de Galène is the sole seller — 0 unauthorized resellers, so no third party controls the Buy Box or PDP. Title + images are flagged as unprotected across all 5 ASINs; watch for outside edits and confirm any title / image change came from the brand, not an outside party changing the PDP.",
-     "<b>Promotions:</b> 'VDG Tiered Discounts' live through 12/31 — 5 orders, 0.62% of the $25k budget used.",
+     "<b>Promotions:</b> Could not confirm this run — the promotions dashboard errored; Global Promotions sales were $0 over the last 7 days.",
      "<b>Listing Protection / Dimensions:</b> Title and images are flagged as unprotected across the 5 ASINs, but no dimension changes, so there is no fee impact."
     ]},
   gap:{us:4, usl:"4", them:28600, theml:"Cafe Du Monde 28.6K", themName:"Cafe Du Monde"},
   frontend:{
-    date:"August 7, 2026",
-    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Vallee de Galene sole seller · A+ content. 5 unique live ASINs (11 SKU-listings). <b>All 5 flavors now pass all four checks</b> — every live page is in stock, wins its Buy Box, shows no third-party sellers, and renders A+ (a five-flavor comparison chart). The long-standing "Cocoa missing A+" frontend flag has cleared on the live page. The one remaining watch is a customer-experience signal on Cocoa (below).`,
-    stats:[["5","ASINs checked (11 SKUs)"],["0","ASINs flagged — all pass"],
-      ["0","Unauthorized resellers"],["0","Missing A+ (live pages)"],
-      ["$150","Aug MTD · run rate $0.9K"]],
+    date:"August 10, 2026",
+    intro:`Four checks per ASIN: ≥5 bullets · Buy Box present · Vallee de Galene sole seller · A+ content. 5 unique live ASINs (11 SKU-listings). <b>All 5 flavors pass all four checks</b> — every live page is in stock, wins its Buy Box, shows no third-party sellers, and renders A+. The watch this run is customer experience, not the page: two flavors — Pure (B0GGHS2BZK) and Cocoa (B0GGHN9Y6Y) — are Very Poor in VOC for "damaged item" / "product condition." Cocoa is also low on stock (20 left).`,
+    stats:[["5","ASINs checked"],["0","ASINs flagged — all pass"],
+      ["0","Unauthorized resellers"],
+      ["$225","Aug MTD · run rate $0.8K"]],
     rows:[
-     ["Cocoa · B0GGHN9Y6Y","In stock — 15 left · top seller",`Passes all four frontend checks (5 bullets, Buy Box, sole seller, A+). <span class="fail">Watch</span> — carries the account's only Very Poor VOC (1 NCX of 15, "product condition") and is low on stock; review packaging &amp; confirm a replenishment.`]
+     ["Pure · B0GGHS2BZK","In stock · Very Poor VOC",`Passes all four frontend checks. <span class="fail">Watch</span> — Very Poor VOC (NCX 6.25%, "damaged item"); a packaging/handling risk, not a page defect.`],
+     ["Cocoa · B0GGHN9Y6Y","In stock — 20 left · Very Poor VOC",`Passes all four checks. <span class="fail">Watch</span> — Very Poor VOC (NCX 6.67%, "product condition") and low on stock; review packaging &amp; confirm a replenishment.`]
     ],
-    urgent:`<b>Summary:</b> Every flavor passes all four checks, with no suppression or unauthorized sellers. The one watch is Cocoa (B0GGHN9Y6Y) — the top seller carries the account's only Very Poor VOC and is low on stock (15). Review packaging and confirm a replenishment.`,
-    trend:`<b>Improved</b> — the long-standing Cocoa "missing A+" frontend defect has cleared: all 5 flavors now pass all four live checks (bullets, Buy Box, sole seller, A+). The only remaining watch is the Cocoa customer-experience signal (Very Poor VOC) plus its low stock (15 units). No unauthorized sellers; Account Health fully Healthy (AHR 200, ODR 0%).`
+    audit:[
+     [1,"CHICON-PUR-08-FBA — Chicory Coffee, Pure (Liquid Concentrate)","B0GGHS2BZK","PASS (5)","PASS","PASS","PASS","In stock. Sold by Vallée de Galène, ships from Amazon. VOC: Very Poor — NCX 6.25%, 'damaged item'."],
+     [2,"CHICON-COC-08-FBA — Chicory Coffee, Cocoa Extract","B0GGHN9Y6Y","PASS (5)","PASS","PASS","PASS","In stock but LOW: only 20 left. Sold by Vallée de Galène. VOC: Very Poor — NCX 6.67%, 'product condition not as expected'."],
+     [3,"CHICON-VAN-08-FBA — Chicory Coffee, Vanilla Extract","B0GGJ4L5HR","PASS (5)","PASS","PASS","PASS","In stock. Sold by Vallée de Galène, ships from Amazon. VOC Excellent."],
+     [4,"CHICON-ELD-08-FBA — Chicory Coffee, Elderberry Juice","B0GGHSTP68","PASS (5)","PASS","PASS","PASS","In stock. Sold by Vallée de Galène, ships from Amazon. VOC Excellent."],
+     [5,"CHICON-LEM-08-FBA — Chicory Coffee, Lemon Extract","B0GGHGZ386","PASS (5)","PASS","PASS","PASS","In stock. Sold by Vallée de Galène, ships from Amazon. VOC Excellent."]
+    ],
+    urgent:`<b>Summary:</b> Every flavor passes all four frontend checks with no suppression or unauthorized sellers. The real issue is customer experience: two top-revenue flavors — Pure (B0GGHS2BZK) and Cocoa (B0GGHN9Y6Y) — are Very Poor in VOC for "damaged item" / "product condition," pointing to packaging damage on the glass bottles. Review inbound/outbound packaging, and restock Cocoa (20 left).`,
+    trend:`All 5 flavors pass all four live checks (bullets, Buy Box, sole seller, A+). The watch has widened from one to two Very Poor VOC flavors — Pure and Cocoa — both flagged for packaging/handling damage; Cocoa is also low at 20 units. No unauthorized sellers; Account Health fully Healthy (AHR 200, ODR 0%).`
   },
   findings:[
    ["Value perception","At $29.99 it reads about 2× rivals, and the ~$0.60-per-cup value isn't shown on the page.","Add a value infographic (~50 servings, about $0.60 per cup, no brewing needed).","High","Open",""],
    ["Promotions","Subscribe &amp; Save shows no discount — a key lever is switched off.","Turn on a real Subscribe &amp; Save discount, plus an acquisition coupon and a list-price anchor.","High","For approval","For client approval to turn on a real S&amp;S discount."],
-   ["Fulfillment","Reviews report that bottles ship in bubble mailers and arrive damaged.","Switch to protective boxing to protect the ratings.","High","For approval","For client approval to switch to protective boxing."],
+   ["Fulfillment","Two top-revenue flavors are now Very Poor in VOC — Pure ('damaged item') and Cocoa ('product condition not as expected') — pointing to packaging damage on the 250 ml glass bottles, which ship in bubble mailers.","Switch to protective boxing and review inbound/outbound packaging to protect the ratings and NCX.","High","For approval","For client approval to switch to protective boxing."],
    ["Reviews","Only 4 reviews (all 5.0★) versus thousands for the incumbents.","Add Vine and automated review requests, and build toward the hundreds.","High","Done","Manual not eligible — the system has already auto-sent review requests to customers."],
    ["Reach/SEO","It indexes on 'chicory' but under-targets 'coffee alternative' and 'coffee substitute'.","Add coffee-alternative terms and '~50 servings' to the title and backend, and broaden the ads.","Medium","For approval","For client approval to add coffee-alternative terms + ~50 servings to title/backend and broaden ads."]
   ],
